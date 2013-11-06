@@ -1,0 +1,136 @@
+body {
+	background-color: #DDD;
+	padding-left: 50px;
+	padding-right: 50px;
+}
+
+header {
+}
+
+#title {
+	background-color: #8493CA;
+	border-style: solid;
+	border-width: 1px;
+	border-color: #000099;
+	padding: 20px;
+}
+
+header h1, h2 {
+	display: inline-block;
+}
+
+header h1 {
+	margin-top: 0px;
+	margin-left: 60px;
+	font-size: 60px;
+	font-family: sans-serif;
+	font-weight: 100;
+}
+
+header h2 {
+	margin-top: -30px;
+	margin-left: 40px;
+	font-size: 18px;
+}
+
+#menu {
+	padding: 0px;
+	margin: 0px; 
+	margin-top: -1px;
+	list-style: none;
+}
+
+#menu li a {
+	display: block; 
+	height: 40px; 
+	line-height: 40px; 
+	padding: 0 20px; 
+	float: left; 
+	background: #7BCDC8; 
+	color: black; 
+	text-decoration: none;
+	margin-right: 1px;
+
+	border-style: solid;
+	border-width: 1px;
+
+	margin-left: -2px;
+
+	transition: background-color .5s;
+}
+
+#menu li a:hover {
+	background-color: #8493CA;
+}
+
+#menu>:first-child a{
+	margin-left: 0px;
+}
+
+#menu>:last-child a{
+	margin-right: 0px;
+}
+
+#menu li a {
+	text-decoration: none;
+	color: black;
+}
+
+#menu .signin {
+	float: right;
+}
+
+#menu .selected a {
+	background-color: #8493CA;
+}
+
+/*
+http://www.tinygorilla.com/Easter_eggs/PallateHex.html
+
+Pastel Red: #F7977A
+
+
+Pastel Red Orange: #F9AD81
+
+ 	
+Pastel Yellow Orange: #FDC68A
+
+ 	
+Pastel Yellow: #FFF79A
+
+ 	
+Pastel Pea Green: #C4DF9B
+
+ 	
+Pastel Yellow Green: #A2D39C
+
+ 	
+Pastel Green: #82CA9D
+
+ 	
+Pastel Green Cyan: #7BCDC8
+
+ 	
+Pastel Cyan: #6ECFF6
+
+ 	
+Pastel Cyan Blue: #7EA7D8
+
+ 	
+Pastel Blue: #8493CA
+
+ 	
+Pastel Blue Violet: #8882BE
+
+ 	
+Pastel Violet: #A187BE
+
+ 	
+Pastel Violet Magenta: #BC8DBF
+
+ 	
+Pastel Magenta: #F49AC2
+
+ 	
+Pastel Magenta Red: #F6989D
+*/
