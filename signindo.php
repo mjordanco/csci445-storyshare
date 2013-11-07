@@ -27,6 +27,8 @@
 			if ($valid) {
 				$user_id = $row['id'];
 				$_SESSION['user_id'] = $user_id;
+
+				header('Location: ./');
 			}
 		}
 	?>

@@ -1,0 +1,12 @@
+<html>
+<head>
+	<?php
+		include_once('phplibs.php');
+	?>
+</head>
+<body>
+	<?php
+		print_header("trophies");
+	?>
+</body>
+</html>

@@ -23,7 +23,7 @@ function print_header($selected_page) {
 			echo ' class="selected"';
 		}
 		echo '>
-			<a href="./">All Prompts</a>
+			<a href="./prompts.php">All Prompts</a>
 		</li>';
 
 		echo '<li';
@@ -31,7 +31,7 @@ function print_header($selected_page) {
 			echo ' class="selected"';
 		}
 		echo '>
-			<a href="./">All Stories</a>
+			<a href="./stories.php">All Stories</a>
 		</li>';
 
 		echo '<li';
@@ -39,15 +39,7 @@ function print_header($selected_page) {
 			echo ' class="selected"';
 		}
 		echo '>
-			<a href="./">Weekly Trophies</a>
-		</li>';
-
-		echo '<li';
-		if ($selected_page == "submitprompt") {
-			echo ' class="selected"';
-		}
-		echo '>
-			<a href="./submitprompt.php">Submit Prompt</a>
+			<a href="./trophies.php">Weekly Trophies</a>
 		</li>';
 
 
@@ -60,6 +52,14 @@ function print_header($selected_page) {
 			<a href="./signin.php">Sign In</a>
 			</li>';
 	} else {
+		echo '<li';
+		if ($selected_page == "submitprompt") {
+			echo ' class="selected"';
+		}
+		echo '>
+			<a href="./submitprompt.php">Submit Prompt</a>
+		</li>';
+
 		echo '<li class="signin';
 		if ($selected_page == "signout") {
 			echo ' selected';
@@ -105,12 +105,27 @@ function register_user($username, $password, $firstname, $lastname) {
 	$db = open_db();
 	
 	$add_query = 'INSERT INTO users(username, password, firstname, lastname) VALUES("' . $username . '", "' . $password . '", "' . $firstname . '", "' .$lastname . '")';
-	echo $add_query;
 	$db->query($add_query);
 
 	$user_id = $db->insert_id;
 
 	$_SESSION['user_id'] = $user_id;
+
+	return $user_id;
+}
+
+function submit_prompt($name, $category, $prompt, $points, $user_id) {
+
+	$db = open_db();
+
+	$add_query = 'INSERT INTO prompts(name, category, prompt, points, user_id) VALUES("' . $name . '", "' . $category . '", "' . $prompt . '", ' . $points . ', ' . $user_id . ')';
+	echo $add_query;
+	$db->query($add_query);
+
+	$prompt_id = $db->insert_id;
+	echo $prompt_id;
+
+	return $prompt_id;
 }
 
 session_start();

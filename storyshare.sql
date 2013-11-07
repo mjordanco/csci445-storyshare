@@ -22,9 +22,10 @@ CREATE TABLE prompts (
 	id INTEGER PRIMARY KEY AUTO_INCREMENT,
 	name TEXT,
 	prompt TEXT,
+	category TEXT,
 	user_id INTEGER,
 	points INTEGER,
-	FOREIGN KEY (user_id) REFERENCES users(id) 
+	FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
 );
 
 CREATE TABLE stories (
@@ -34,8 +35,8 @@ CREATE TABLE stories (
 	prompt_id INTEGER,
 	user_id INTEGER,
 	points INTEGER,
-	FOREIGN KEY (prompt_id) REFERENCES prompts(id) ,
-	FOREIGN KEY (user_id) REFERENCES users(id) 
+	FOREIGN KEY (prompt_id) REFERENCES prompts(id) ON DELETE CASCADE,
+	FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
 );
 
 CREATE TABLE trophies (
@@ -43,8 +44,8 @@ CREATE TABLE trophies (
 	type TEXT,
 	user_id INTEGER,
 	story_id INTEGER,
-	FOREIGN KEY (user_id) REFERENCES users(id),
-	FOREIGN KEY (story_id) REFERENCES stories(id)
+	FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
+	FOREIGN KEY (story_id) REFERENCES stories(id) ON DELETE CASCADE
 );
 
 CREATE TABLE categories (
@@ -56,13 +57,13 @@ CREATE TABLE categories (
 CREATE TABLE prompt_category (
 	prompt_id INTEGER,
 	category_id INTEGER,
-	FOREIGN KEY (prompt_id) REFERENCES prompts(id),
-	FOREIGN KEY (category_id) REFERENCES categories(id)
+	FOREIGN KEY (prompt_id) REFERENCES prompts(id) ON DELETE CASCADE,
+	FOREIGN KEY (category_id) REFERENCES categories(id) ON DELETE CASCADE
 );
 
 CREATE TABLE story_category (
 	story_id INTEGER,
 	category_id INTEGER,
-	FOREIGN KEY (story_id) REFERENCES stories(id),
-	FOREIGN KEY (category_id) REFERENCES categories(id)
+	FOREIGN KEY (story_id) REFERENCES stories(id) ON DELETE CASCADE,
+	FOREIGN KEY (category_id) REFERENCES categories(id) ON DELETE CASCADE
 );
