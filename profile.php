@@ -14,7 +14,11 @@
 </head>
 <body>
 	<?php
-	print_header(0);
+	$page = "";
+	if (isset($_SESSION['user_id']) && $_SESSION['user_id'] == $_GET['user_id']) {
+		$page = "yourprofile";
+	}
+	print_header($page);
 	?>
 
 <section id="signinbox">
@@ -22,11 +26,7 @@
 		<?php
 			$user_id = $_GET['user_id'];
 
-			@ $db = new mysqli('localhost', 'root', '', 'storyshare');
-			if (mysqli_connect_errno()) {
-	 			echo 'Error: Could not connect to database. Please try again later.';
-	 			exit;
-			}
+			$db = open_db();
 
 			$query = 'SELECT * FROM users WHERE id = ' . $user_id;
 			$result = $db->query($query);

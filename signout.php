@@ -15,7 +15,7 @@
 <body>
 	<?php
 	$_SESSION['user_id'] = null;
-	print_header(0);
+	print_header("");
 	?>
 
 	<section id="signoutbox">

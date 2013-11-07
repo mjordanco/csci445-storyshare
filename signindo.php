@@ -14,12 +14,7 @@
 </head>
 <body>
 	<?php
-
-		@ $db = new mysqli('localhost', 'root', '', 'storyshare');
-		if (mysqli_connect_errno()) {
- 			echo 'Error: Could not connect to database. Please try again later.';
- 			exit;
-		}
+		$db = open_db();
 
 		$username = $_POST['user'];
 		$password = $_POST['pass'];
@@ -38,7 +33,7 @@
 
 
 	<?php
-	print_header(0);
+	print_header("");
 	?>
 
 	<section id="signinbox">

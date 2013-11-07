@@ -16,36 +16,46 @@
 	<?php
 		
 
-		@ $db = new mysqli('localhost', 'root', '', 'storyshare');
-		if (mysqli_connect_errno()) {
- 			echo 'Error: Could not connect to database. Please try again later.';
- 			exit;
-		}
+		$db = open_db();
 
 		$username = $_POST['user'];
 		$password = $_POST['pass'];
 		$password_again = $_POST['pass_again'];
-		$first_name = $_POST['first'];
-		$last_name = $_POST['last'];
+		$firstname = $_POST['first'];
+		$lastname = $_POST['last'];
 
-		$validity_query = "SELECT id, password FROM users WHERE username = '" . $username . "';";
-		$result = $db->query($validity_query);
+		$_SESSION['error'] = '';
 
-		$row = mysqli_fetch_array($result);
-		if (!$row) {
-			$add_query = 'INSERT INTO users(username, password, firstname, lastname) VALUES("' . $username . '", "' . $password . '", "' . $first_name . '", "' .$last_name . '")';
-			echo $add_query;
-			$db->query($add_query);
-
-			$user_id = $db->insert_id;
-
-			$_SESSION['user_id'] = $user_id;
+		if ($username == "" || $password == "" || $firstname == "" || $lastname == "") {
+			$_SESSION['error'] .= '<h1>All the registration fields are required.</h1>';
 		}
+
+		if ($password != $password_again) {
+			$_SESSION['error'] .= '<h1>Your password fields didn\'t match.</h1>';
+		}
+
+		if ($_SESSION['error'] == '') {
+			$_SESSION['error'] = null;
+		}
+
+		if (!isset($_SESSION['error'])) {
+			$unique_query = "SELECT id, password FROM users WHERE username = '" . $username . "';";
+			$result = $db->query($unique_query);
+
+			$row = mysqli_fetch_array($result);
+			if (!$row) {
+				register_user($username, $password, $firstname, $lastname);
+			} else {
+				$_SESSION['error'] = '<h1>Unfortunately, that username was already taken. Please go back and try again!</h1>';
+			}
+		}
+
+		
 
 	?>
 
 	<?php
-	print_header(0);
+	print_header("");
 	?>
 
 	<section id="signinbox">
@@ -54,7 +64,9 @@
 				if (isset($_SESSION['user_id'])) {
 					echo '<h1>Congrats, you are registered and signed in!</h1>';
 				} else {
-					echo '<h1>Unfortunately, that username is already taken. Please try again!</h1>';
+					echo $_SESSION['error'];
+					echo '<h1>Please go back and try again!</h1>';
+					$_SESSION['error'] = null;
 				}
 			?>
 		</center>

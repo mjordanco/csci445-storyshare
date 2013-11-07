@@ -85,7 +85,7 @@ header h2 {
 
 	margin-left: -2px;
 
-	transition: background-color .5s;
+	transition: background-color 1s;
 }
 
 #menu li a:hover {

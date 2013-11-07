@@ -27,17 +27,17 @@
 </head>
 <body>
 	<?php
-	print_header(0);
+	print_header("");
 	?>
 
 	<section id="signinbox">
 		<center>
 			<h1>Register for StoryShare</h1>
 			<h2>StoryShare is a website devoted to creative authorship.</h2>
-			<form method="post" action="register.php">
+			<form method="post" action="registerdo.php">
 				<input type="text" placeholder="Username..." name="user"/><br>
-				<input type="text" placeholder="Password..." name="pass"/><br>
-				<input type="text" placeholder="Re-type Password..." name="pass_again"/><br>
+				<input type="password" placeholder="Password..." name="pass"/><br>
+				<input type="password" placeholder="Re-type Password..." name="pass_again"/><br>
 				<input type="text" placeholder="First Name" name="first"/><br>
 				<input type="text" placeholder="Last Name" name="last"/><br>
 				<button type="submit">Register</button><br><br>

@@ -24,7 +24,7 @@
 <body>
 
 <?php
-print_header(0);
+print_header("index");
 ?>
 
 <section class="featured">
