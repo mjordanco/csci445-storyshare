@@ -1,0 +1,55 @@
+<html>
+<head>
+	<link rel="stylesheet" href="theme.css" />
+	<style type="text/css">
+		#signinbox {
+			width: 50%;
+			margin-left: auto;
+			margin-right: auto;
+		}
+		#signinbox button {
+			margin-top: 20px;
+		}
+	</style>
+</head>
+<body>
+	<header>
+		<div id="title">
+			<h1>StoryShare</h1><br>
+			<h2>A place to let your imagination run wild!</h2>
+		</div>
+		<ul id="menu">
+			<li>
+				<a href="./">Home</a>
+			</li>
+			<li>
+				<a href="./">All Prompts</a>
+			</li>
+			<li>
+				<a href="./">All Stories</a>
+			</li>
+			<li>
+				<a href="./">Weekly Trophies</a>
+			</li>
+			<li class="signin selected">
+				<a href="./">Sign In</a>
+			</li>
+		</ul>
+	</header>
+
+	<section id="signinbox">
+		<center>
+			<h1>Register for StoryShare</h1>
+			<h2>StoryShare is a website devoted to creative authorship.</h2>
+			<form method="post" action="register.php">
+				<input type="text" placeholder="Username..." name="user"/><br>
+				<input type="text" placeholder="Password..." name="pass"/><br>
+				<input type="text" placeholder="Re-type Password..." name="pass_again"/><br>
+				<input type="text" placeholder="First Name" name="first"/><br>
+				<input type="text" placeholder="Last Name" name="last"/><br>
+				<button type="submit">Register</button><br><br>
+			</form>
+		</center>
+	</section>
+</body>
+</html>

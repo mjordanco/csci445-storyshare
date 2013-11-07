@@ -3,17 +3,6 @@
 	<link rel="stylesheet" type="text/css" href="theme.css">
 	<style type="text/css">
 		.featured {
-			margin-top: 80px;
-			margin-left: 80px;
-			margin-right: 80px;
-
-			border-style: solid;
-			border-width: 1px;
-
-			padding: 20px;
-			padding-top: 0px;
-
-			background-color: #8493CA;
 		}
 
 		.featured .featured_bottom {
@@ -48,12 +37,22 @@
 		<li>
 			<a href="./">Weekly Trophies</a>
 		</li>
-		<li class="signin">
-			<a href="./">Your Profile</a>
-		</li>
-		<li class="signin">
-			<a href="./">Sign In</a>
-		</li>
+		<?php
+			session_start();
+			if (!isset($_SESSION['user_id'])) {
+				echo '<li class="signin">
+					<a href="./signin.html">Sign In</a>
+					</li>';
+			} else {
+				echo '<li class="signin">
+					<a href="./signout.php">Sign Out</a>
+					</li>';
+				echo '<li class="signin">
+					<a href="./profile.php?user_id=' . $_SESSION['user_id'] . '">Your Profile</a>
+					</li>';
+			}
+		?>
+		
 	</ul>
 </header>
 
