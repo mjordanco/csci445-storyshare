@@ -1,5 +1,8 @@
 <html>
 <head>
+	<?php
+	require_once('phplibs.php');
+	?>
 	<link rel="stylesheet" type="text/css" href="theme.css">
 	<style type="text/css">
 		#signinbox {
@@ -10,42 +13,9 @@
 	</style>
 </head>
 <body>
-<header>
-	<div id="title">
-		<h1>StoryShare</h1><br>
-		<h2>A place to let your imagination run wild!</h2>
-	</div>
-	<ul id="menu">
-		<li class="">
-			<a href="./">Home</a>
-		</li>
-		<li>
-			<a href="./">All Prompts</a>
-		</li>
-		<li>
-			<a href="./">All Stories</a>
-		</li>
-		<li>
-			<a href="./">Weekly Trophies</a>
-		</li>
-		<?php
-			session_start();
-			if (!isset($_SESSION['user_id'])) {
-				echo '<li class="signin">
-					<a href="./signin.html">Sign In</a>
-					</li>';
-			} else {
-				echo '<li class="signin">
-					<a href="./signout.php">Sign Out</a>
-					</li>';
-				echo '<li class="signin selected">
-					<a href="./profile.php?user_id=' . $_SESSION['user_id'] . '">Your Profile</a>
-					</li>';
-			}
-		?>
-		
-	</ul>
-</header>
+	<?php
+	print_header(0);
+	?>
 
 <section id="signinbox">
 	<center>

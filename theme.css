@@ -21,6 +21,21 @@ section {
 	background-color: #8493CA;
 }
 
+input {
+	font-size: 20px;
+	background-color: #7BCDC8;
+}
+
+::-webkit-input-placeholder { /* WebKit browsers */
+    color:    #000;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color:    #000;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color:    #000;
+}
+
 #title {
 	background-color: #8493CA;
 	border-style: solid;
