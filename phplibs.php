@@ -59,7 +59,15 @@ function print_header($selected_page) {
 		echo '>
 			<a href="./submitprompt.php">Submit Prompt</a>
 		</li>';
-
+		#This is so that we can see the page.
+		echo '<li';
+		if ($selected_page == "submitstory") {
+			echo ' class="selected"';
+		}
+		echo '>
+			<a href="./submitstory.php">Submit Story</a>
+		</li>';
+		
 		echo '<li class="signin';
 		if ($selected_page == "signout") {
 			echo ' selected';
