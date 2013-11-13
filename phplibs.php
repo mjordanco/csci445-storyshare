@@ -135,7 +135,20 @@ function submit_prompt($name, $category, $prompt, $points, $user_id) {
 
 	return $prompt_id;
 }
+function submit_story($name, $category, $rating, $story, $points, $user_id){
+	$db = open_db();
 
+	$add_query = 'INSERT INTO stories(name, story, prompt_id, points, user_id) VALUES("' . $name . '", "' . $story . '", "' . 1 . '", ' . $points . ', ' . $user_id . ')';
+	echo $add_query;
+	$db->query($add_query);
+
+	$prompt_id = $db->insert_id;
+	echo $prompt_id;
+
+	return $prompt_id;
+
+
+}
 session_start();
 
 ?>
