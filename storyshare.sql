@@ -1,6 +1,6 @@
-CREATE DATABASE IF NOT EXISTS team12-storyshare;
+CREATE DATABASE IF NOT EXISTS team12_storyshare;
 
-USE team12-storyshare;
+USE team12_storyshare;
 
 DROP TABLE IF EXISTS users;
 DROP TABLE IF EXISTS prompts;
