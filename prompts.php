@@ -3,6 +3,10 @@
 	<?php
 		include_once('phplibs.php');
 	?>
+<link rel="stylesheet" type="text/css" href="view_stories_prompts.css">
+<style>
+
+</style>
 </head>
 <body>
 	<?php
