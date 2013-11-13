@@ -4,83 +4,9 @@
 		include_once('phplibs.php');
 	?>
 	
+<link rel="stylesheet" type="text/css" href="view_stories_prompts.css">
 <style>
-	#center {
-		margin-left: 200px;
-		height: 700px;
-		background: white;
-		border: 1px solid black;
-		border-radius: 5px;
-	}	
-	
-	#profile_img {
-		margin-top: 70px;
-		margin-left: 50px;
-		width: 80px;
-		height: 80px;
-		border: 5px solid pink;
-		border-radius: 5px;
-	}
-	
-	.sidebar {
-		text-align: center;
-		font-family: "Times New Roman", Times, serif;
-		font-size: 12pt;
-	
-		border-radius:15px 15px 15px 15px;
-		border:2px solid black;
-		box-shadow:4px 13px 13px #000000;
-	
-		float: left;
-		position: fixed;
-		margin: 0 0 -20px;
-		background-color: #CCFFFF;
-		opacity: .9;
-		width: 175px;
-		height: 40px;
-		line-height: 40px;
-	}
-	#first {
-	}
-	#second {
-		margin: 45px 0 45px 0 ;
-	}
-	#third {
-		margin: 90px 0 90px 0;
-	}
-	#fourth {
-		margin: 135px 0 135px 0;
-	}
-	#fifth {
-		margin: 180px 0 180px 0;	
-	}
-	#sixth {
-		margin: 225px 0 225px 0;
-	}
-	#seventh {
-		margin: 270px 0 270px 0;
-	}
-	#eigth {
-		margin: 455px 0 455px 0;
-	}
-	a:link, a:visited {
-		text-decoration: none;
-		color: black;
-	}
-	a:hover, a:active {
-		text-decoration: none;
-		color: cyan;
-	}
-	
-	.storyBox {
-		margin-top: 25px;
-		margin-left: 50px;
-		margin-right: 50px;
-		border: 1px dashed black;
-		border-radius: 10px;
-		padding: 15px 15px 15px 15px;
-	}
-	
+
 </style>
 </head>
 <body>
@@ -102,8 +28,10 @@
 	<div class="sidebar" id="eigth"><a href="addLink">SCI-FI</a></div>
 	
 	<div id="center">
-			<h2>Current Genre: Action</h2>
-
+		<h2 id="genreHeader">Current Genre: Action</h2>
+		<div class="storyBox">
+			<img src="user_profile_pic_placeholder.png" alt="User profile picture">
+		</div>
 	</div>
 	</div>
 	
