@@ -91,7 +91,7 @@ function print_header($selected_page) {
 }
 
 function open_db() {
-	@ $db = new mysqli('localhost', 'root', '', 'storyshare');
+	@ $db = new mysqli('localhost', 'root', '', 'team12-storyshare');
 	if (mysqli_connect_errno()) {
 		echo 'Error: Could not connect to database. Please try again later.';
 		return null;
