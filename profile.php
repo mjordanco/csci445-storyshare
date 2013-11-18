@@ -6,6 +6,7 @@
 	<link rel="stylesheet" type="text/css" href="theme.css">
 	<style type="text/css">
 		#signinbox {
+			float: left;
 			width: 10%;
 			margin-left: 10px;
 		}
@@ -40,7 +41,9 @@
 	}
 	print_header($page);
 	?>
-
+	
+	<br>
+	<br>
 <section id="signinbox">
 		<?php
 			$user_id = $_GET['user_id'];

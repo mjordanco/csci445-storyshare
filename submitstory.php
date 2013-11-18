@@ -9,6 +9,7 @@
 			margin-left: 15%;
 		}
 		#infoBox{
+			float: left;
 			width: 10%;
 			margin-left: 10px;
 		}
@@ -19,6 +20,8 @@
 	<?php
 		print_header("submitstory");
 	?>
+	<br>
+	<br>
 	<section id="infobox">
 		<?php
 			

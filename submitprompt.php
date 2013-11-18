@@ -33,7 +33,6 @@
 <body>
 	<?php
 		print_header("submitprompt");
-		echo date('Y-m-d');
 	?>
 	<section id="submit_box">
 		<form method="post" action="submitpromptdo.php">
