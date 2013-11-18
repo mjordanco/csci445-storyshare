@@ -8,6 +8,7 @@ header {
 }
 
 section {
+	border-radius: 15px;
 	margin-top: 80px;
 	margin-left: 80px;
 	margin-right: 80px;
@@ -37,6 +38,8 @@ input {
 }
 
 #title {
+	border-top-left-radius: 20px;
+	border-top-right-radius: 35px;
 	background-color: #8493CA;
 	border-style: solid;
 	border-width: 1px;
@@ -63,6 +66,7 @@ header h2 {
 }
 
 #menu {
+	
 	padding: 0px;
 	margin: 0px; 
 	margin-top: -1px;
@@ -70,6 +74,8 @@ header h2 {
 }
 
 #menu li a {
+border-bottom-left-radius: 7px;
+	
 	display: block; 
 	height: 40px; 
 	line-height: 40px; 

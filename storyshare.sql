@@ -25,6 +25,7 @@ CREATE TABLE prompts (
 	category TEXT,
 	user_id INTEGER,
 	points INTEGER,
+	submit_date datetime,
 	FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
 );
 
@@ -35,6 +36,7 @@ CREATE TABLE stories (
 	prompt_id INTEGER,
 	user_id INTEGER,
 	points INTEGER,
+	submit_date DATE,
 	FOREIGN KEY (prompt_id) REFERENCES prompts(id) ON DELETE CASCADE,
 	FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
 );

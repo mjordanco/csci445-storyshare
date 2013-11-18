@@ -126,7 +126,8 @@ function submit_prompt($name, $category, $prompt, $points, $user_id) {
 
 	$db = open_db();
 
-	$add_query = 'INSERT INTO prompts(name, category, prompt, points, user_id) VALUES("' . $name . '", "' . $category . '", "' . $prompt . '", ' . $points . ', ' . $user_id . ')';
+	$curdate = date('Y-m-d h:i:s');
+	$add_query = 'INSERT INTO prompts(name, category, prompt, points, submit_date, user_id) VALUES("' . $name . '", "' . $category . '", "' . $prompt . '", "' . $points .'","'. $curdate  .'", ' . $user_id . ')';
 	echo $add_query;
 	$db->query($add_query);
 
@@ -134,11 +135,13 @@ function submit_prompt($name, $category, $prompt, $points, $user_id) {
 	echo $prompt_id;
 
 	return $prompt_id;
+	
+	
 }
 function submit_story($name, $category, $rating, $story, $points, $user_id){
 	$db = open_db();
-
-	$add_query = 'INSERT INTO stories(name, story, prompt_id, points, user_id) VALUES("' . $name . '", "' . $story . '", "' . 1 . '", ' . $points . ', ' . $user_id . ')';
+	$curdate = date('Y-m-d');
+	$add_query = 'INSERT INTO stories(name, story, prompt_id, points, submit_date, user_id) VALUES("' . $name . '", "' . $story . '", "' . 1 . '","' . $points . '", "'. $curdate .'", ' . $user_id . ')';
 	echo $add_query;
 	$db->query($add_query);
 
