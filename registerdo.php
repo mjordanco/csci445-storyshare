@@ -27,7 +27,7 @@
 		$_SESSION['error'] = '';
 
 		if ($username == "" || $password == "" || $firstname == "" || $lastname == "") {
-			$_SESSION['error'] .= '<h1>All the registration fields are required.</h1>';
+			$_SESSION['error'] .= '<h1>All registration fields are required.</h1>';
 		}
 
 		if ($password != $password_again) {

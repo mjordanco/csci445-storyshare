@@ -8,12 +8,18 @@
 		#box {
 			margin-left: 15%;
 		}
-		#infoBox{
+		#infoBox {
 			float: left;
 			width: 10%;
 			margin-left: 10px;
 		}
-		
+        #submit_story {
+            height: auto;
+            width: 560px;
+            resize: none;
+            padding: 10px 10px 10px 10px;
+            margin: 15px 15px 15px 15px;
+        }
 	</style>
 </head>
 <body>
@@ -22,17 +28,10 @@
 	?>
 	<br>
 	<br>
-	<section id="infobox">
-		<?php
+	
+    <section id="box">
 			
-			echo '<h4>Genre: <h4>';
-			echo '<h4>From Prompt: <h4>';
-			
-		?>
-</section>
-
-	<section id="box">
-			<form method="post" action="submitstorydo.php">
+        <form method="post" action="submitstorydo.php">
 			<input name="name" type="text" placeholder="Title*" /><br>
 			<p>Rating: Select an appropriate audience rating for your story</p>
 			<select name="rating" size="1">
@@ -40,7 +39,8 @@
 				<option value="G">G </option>
 				<option value="PG-13">PG-13</option>
 				<option value="R">R</option>
-			</select><br>
+			</select>
+            <br>
 			
 			<p>Genre: Select the genre that best describes your story</p>
 			<select name="genre">
@@ -52,9 +52,11 @@
   				<option value="horror">Horror</option>
   				<option value="romance">Romance</option>
   				<option value="scifi">Sci-Fi</option>
+                <option value="other">Other</option>
 			</select>
+            <br>
 
-			<textarea name="story"></textarea><br>
+			<textarea id="submit_story" name="story" rows="40" columns="30"></textarea><br>
 			<button type="submit">Submit Story</button>
 		</form>
 	
