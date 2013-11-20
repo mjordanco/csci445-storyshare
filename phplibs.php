@@ -138,6 +138,24 @@ function submit_prompt($name, $category, $prompt, $points, $user_id) {
 	
 	
 }
+function get_prompts( $category) {
+
+	$db = open_db();
+
+	$curdate = date('Y-m-d h:i:s');
+	$add_query = 'SELECT name, prompt, points, from prompts where category = '. $category ;
+	echo $add_query;
+	$result = $db->query($add_query);
+
+	$row
+	
+	
+	echo $prompt_id;
+
+	return $prompt_id;
+	
+	
+}
 function submit_story($title, $genre, $rating, $story, $prompt_id, $user_id, $points, $submit_date){
 	$db = open_db();
 	$submit_date = date('Y-m-d');
