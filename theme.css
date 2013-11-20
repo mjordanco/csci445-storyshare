@@ -1,5 +1,8 @@
 body {
-	background-color: #AAA;
+    background: url(library.jpg) no-repeat center top;
+    opacity: .95;
+	background-size: cover;
+	background-color: #FFFFEB;
 	padding-left: 50px;
 	padding-right: 50px;
 }
@@ -19,12 +22,12 @@ section {
 	padding: 20px;
 	padding-top: 0px;
 
-	background-color: #8493CA;
+	background-color: #7A0000;
 }
 
 input {
 	font-size: 20px;
-	background-color: #7BCDC8;
+	background-color: #CCA300;
 }
 
 ::-webkit-input-placeholder { /* WebKit browsers */
@@ -40,11 +43,15 @@ input {
 #title {
 	border-top-left-radius: 20px;
 	border-top-right-radius: 35px;
-	background-color: #8493CA;
+    background: url(books.jpg) no-repeat center top;
+    opacity: 1;
+    background-size: 1200px 200px;
+	background-color: #7A0000;
 	border-style: solid;
 	border-width: 1px;
-	border-color: #000099;
+	border-color: #CCA300;
 	padding: 20px;
+    color: white;
 }
 
 header h1, h2 {
@@ -81,7 +88,7 @@ border-bottom-left-radius: 7px;
 	line-height: 40px; 
 	padding: 0 20px; 
 	float: left; 
-	background: #7BCDC8; 
+	background: #CCA300; 
 	color: black; 
 	text-decoration: none;
 	margin-right: 1px;
@@ -95,7 +102,7 @@ border-bottom-left-radius: 7px;
 }
 
 #menu li a:hover {
-	background-color: #8493CA;
+	background-color: #A38200;
 }
 
 #menu>:first-child a{
@@ -116,56 +123,5 @@ border-bottom-left-radius: 7px;
 }
 
 #menu .selected a {
-	background-color: #8493CA;
+	background-color: #CCA300;
 }
-
-/*
-http://www.tinygorilla.com/Easter_eggs/PallateHex.html
-
-Pastel Red: #F7977A
-
-
-Pastel Red Orange: #F9AD81
-
- 	
-Pastel Yellow Orange: #FDC68A
-
- 	
-Pastel Yellow: #FFF79A
-
- 	
-Pastel Pea Green: #C4DF9B
-
- 	
-Pastel Yellow Green: #A2D39C
-
- 	
-Pastel Green: #82CA9D
-
- 	
-Pastel Green Cyan: #7BCDC8
-
- 	
-Pastel Cyan: #6ECFF6
-
- 	
-Pastel Cyan Blue: #7EA7D8
-
- 	
-Pastel Blue: #8493CA
-
- 	
-Pastel Blue Violet: #8882BE
-
- 	
-Pastel Violet: #A187BE
-
- 	
-Pastel Violet Magenta: #BC8DBF
-
- 	
-Pastel Magenta: #F49AC2
-
- 	
-Pastel Magenta Red: #F6989D
-*/
