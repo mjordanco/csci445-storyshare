@@ -1,4 +1,5 @@
-CREATE DATABASE IF NOT EXISTS team12_storyshare;
+DROP DATABASE IF EXISTS team12_storyshare;
+CREATE DATABASE team12_storyshare;
 
 USE team12_storyshare;
 
