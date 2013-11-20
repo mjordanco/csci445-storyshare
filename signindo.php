@@ -19,7 +19,7 @@
 		$username = $_POST['user'];
 		$password = $_POST['pass'];
 
-		$user_id = validate_user($username, $password);
+		$user_id = verify_user($username, $password);
 
 		if ($user_id != NULL) {
 			$_SESSION['user_id'] = $user_id;

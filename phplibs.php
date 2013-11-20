@@ -44,7 +44,7 @@ function print_header($selected_page) {
 
 
 	if (!isset($_SESSION['user_id'])) {
-		echo '<li class="signin';
+		echo '<li class="signin last ';
 		if ($selected_page == "signin") {
 			echo ' selected';
 		}
@@ -68,7 +68,7 @@ function print_header($selected_page) {
 			<a href="./submitstory.php">Submit Story</a>
 		</li>';
 		
-		echo '<li class="signin';
+		echo '<li class="signin last ';
 		if ($selected_page == "signout") {
 			echo ' selected';
 		}
@@ -91,7 +91,7 @@ function print_header($selected_page) {
 }
 
 function open_db() {
-	@ $db = new mysqli('localhost', 'team12', 'grapefruit', 'team12_storyshare');
+	@ $db = new mysqli('localhost', 'root', '', 'team12_storyshare');
 	if (mysqli_connect_errno()) {
 		echo 'Error: Could not connect to database. Please try again later.';
 		return null;
@@ -117,7 +117,7 @@ function register_user($username, $password, $firstname, $lastname) {
 	    'salt' => mcrypt_create_iv(22, MCRYPT_DEV_URANDOM),
 	];
 
-	$encrypted_password = passord_hash(password, PASSWORD_BCRYPT, $options);
+	$encrypted_password = password_hash($password, PASSWORD_BCRYPT, $options);
 	
 	$add_query = 'INSERT INTO users(username, password, firstname, lastname) VALUES("' . $username . '", "' . $encrypted_password . '", "' . $firstname . '", "' .$lastname . '")';
 	$db->query($add_query);
@@ -133,7 +133,7 @@ function verify_user($username, $password) {
 
 	$db = open_db();
 
-	$get_hash_query = 'SELECT password FROM users WHERE username =' . $username;
+	$get_hash_query = 'SELECT password, id FROM users WHERE username ="' . $username .'";';
 	$response = $db->query($get_hash_query);
 
 	$row = mysqli_fetch_array($response);
