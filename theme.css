@@ -43,11 +43,15 @@ input {
 #title {
 	border-top-left-radius: 20px;
 	border-top-right-radius: 35px;
+    background: url(books.jpg) no-repeat center top;
+    opacity: 1;
+    background-size: 1200px 200px;
 	background-color: #7A0000;
 	border-style: solid;
 	border-width: 1px;
 	border-color: #CCA300;
 	padding: 20px;
+    color: white;
 }
 
 header h1, h2 {
