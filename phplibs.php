@@ -111,8 +111,15 @@ function print_feature($table, $id) {
 function register_user($username, $password, $firstname, $lastname) {
 
 	$db = open_db();
+
+	$options = [
+	    'cost' => 11,
+	    'salt' => mcrypt_create_iv(22, MCRYPT_DEV_URANDOM),
+	];
+
+	$encrypted_password = passord_hash(password, PASSWORD_BCRYPT, $options);
 	
-	$add_query = 'INSERT INTO users(username, password, firstname, lastname) VALUES("' . $username . '", "' . $password . '", "' . $firstname . '", "' .$lastname . '")';
+	$add_query = 'INSERT INTO users(username, password, firstname, lastname) VALUES("' . $username . '", "' . $encrypted_password . '", "' . $firstname . '", "' .$lastname . '")';
 	$db->query($add_query);
 
 	$user_id = $db->insert_id;
@@ -120,6 +127,25 @@ function register_user($username, $password, $firstname, $lastname) {
 	$_SESSION['user_id'] = $user_id;
 
 	return $user_id;
+}
+
+function verify_user($username, $password) {
+
+	$db = open_db();
+
+	$get_hash_query = 'SELECT password FROM users WHERE username =' . $username;
+	$response = $db->query($get_hash_query);
+
+	$row = mysqli_fetch_array($response);
+
+	$hash = $row['password'];
+
+	if (password_verify($password, $hash)) {
+		return $row['id'];
+	} else {
+		return NULL;
+	}
+
 }
 
 function submit_prompt($name, $category, $prompt, $points, $user_id) {

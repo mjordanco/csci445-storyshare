@@ -19,17 +19,20 @@
 		$username = $_POST['user'];
 		$password = $_POST['pass'];
 
+		$user_id = validate_user($username, $password);
+
+		if ($user_id != NULL) {
+			$_SESSION['user_id'] = $user_id;
+
+			header('Location: ./');
+		}
+
 		$validity_query = "SELECT id, password FROM users WHERE username = '" . $username . "';";
 		$result = $db->query($validity_query);
 
 		while($row = mysqli_fetch_array($result)) {
 			$valid = $row['password'] == $password;
-			if ($valid) {
-				$user_id = $row['id'];
-				$_SESSION['user_id'] = $user_id;
-
-				header('Location: ./');
-			}
+			
 		}
 	?>
 
