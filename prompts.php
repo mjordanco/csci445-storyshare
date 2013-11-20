@@ -32,5 +32,11 @@
 	</div>
 	</div>
 	
+	<table>
+		<?php
+			
+		?>
+	
+	</table>
 </body>
 </html>
