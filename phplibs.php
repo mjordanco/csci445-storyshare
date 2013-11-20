@@ -112,12 +112,9 @@ function register_user($username, $password, $firstname, $lastname) {
 
 	$db = open_db();
 
-	$options = array(
-		'cost' => 11, 
-		'salt' => mcrypt_create_iv(22, MCRYPT_DEV_URANDOM)
-	);
+	$salt = '$2a$%13$' . mcrypt_create_iv(22, MCRYPT_DEV_URANDOM);
 
-	$encrypted_password = password_hash($password, PASSWORD_BCRYPT, $options);
+	$encrypted_password = crypt($password, $salt);
 	
 	$add_query = 'INSERT INTO users(username, password, firstname, lastname) VALUES("' . $username . '", "' . $encrypted_password . '", "' . $firstname . '", "' .$lastname . '")';
 	$db->query($add_query);
@@ -140,7 +137,9 @@ function verify_user($username, $password) {
 
 	$hash = $row['password'];
 
-	if (password_verify($password, $hash)) {
+	$crypt_result = crypt($password, $hash);
+
+	if ($crypt_result == $hash) {
 		return $row['id'];
 	} else {
 		return NULL;
