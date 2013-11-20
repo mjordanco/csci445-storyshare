@@ -147,22 +147,6 @@ function verify_user($username, $password) {
 
 }
 
-function submit_prompt($name, $category, $prompt, $points, $user_id) {
-
-	$db = open_db();
-
-	$curdate = date('Y-m-d h:i:s');
-	$add_query = 'INSERT INTO prompts(name, category, prompt, points, submit_date, user_id) VALUES("' . $name . '", "' . $category . '", "' . $prompt . '", "' . $points .'","'. $curdate  .'", ' . $user_id . ')';
-	echo $add_query;
-	$db->query($add_query);
-
-	$prompt_id = $db->insert_id;
-	echo $prompt_id;
-
-	return $prompt_id;
-	
-	
-}
 function get_prompts( $category) {
 
 	$db = open_db();
@@ -191,10 +175,31 @@ function get_prompts( $category) {
 	
 	
 }
-function submit_story($title, $genre, $rating, $story, $prompt_id, $user_id, $points, $submit_date){
+
+function submit_prompt($name, $category, $prompt, $points, $user_id) {
+
 	$db = open_db();
-	$submit_date = date('Y-m-d');
-	$add_query = 'INSERT INTO stories(title, genre, rating, story, prompt_id, user_id, points, submit_date) VALUES("' . $title . '", "' . $genre . '", "' . $rating . '", "' . $story . '", "' . 1 . '","' . $user_id . '", "'. $points .'", ' . $submit_date . ')';
+
+	$curdate = date('Y-m-d h:i:s');
+	$add_query = 'INSERT INTO prompts(name, category, prompt, points, submit_date, user_id) VALUES("' . $name . '", "' . $category . '", "' . $prompt . '", "' . $points .'","'. $curdate  .'", ' . $user_id . ')';
+	echo $add_query;
+	$db->query($add_query);
+
+	$prompt_id = $db->insert_id;
+	echo $prompt_id;
+
+	return $prompt_id;
+	
+	
+}
+
+function submit_story($title, $genre, $rating, $story, $prompt_id, $user_id, $points){
+	
+    $db = open_db();
+    
+	$submit_date = date('Y-m-d h:i:s');
+    
+	$add_query = 'INSERT INTO stories(title, genre, rating, story, prompt_id, user_id, points, submit_date) VALUES("' . $title . '", "' . $genre . '", "' . $rating . '", "' . $story . '", "' . $prompt_id . '","' . $user_id . '", "'. $points .'", ' . $submit_date . ')';
 	echo $add_query;
 	$db->query($add_query);
 

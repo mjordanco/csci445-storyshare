@@ -24,21 +24,20 @@
            
             $db = open_db();
 
-			$title = $_POST['title'];
+			$name = $_POST['name'];
 			$genre = $_POST['genre'];
 			$rating = $_POST['rating'];
 			$story = $_POST['story'];
 			
-            $prompt_id = $_SESSION['prompt_id'];
+            $prompt_id = 1;
             $user_id = $_SESSION['user_id'];
 	        $points = 0;
-            $submit_date = date("Y-m-d");
 
-			if ($title == "" || $genre == "" || $rating == "" || $story == "") {
+			if ($name == "" || $genre == "" || $rating == "" || $story == "") {
 				echo 'All fields must be filled out to submit a story! Go back and try again!';
 			}
 
-			submit_story($title, $genre, $rating, $story, $prompt_id, $user_id, $points, $submit_date);
+			submit_story($title, $genre, $rating, $story, $prompt_id, $user_id, $points);
             echo "Just called our submit story function";
 			header('Location: ./');
 		
