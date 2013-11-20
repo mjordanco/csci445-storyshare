@@ -142,17 +142,27 @@ function get_prompts( $category) {
 
 	$db = open_db();
 
-	$curdate = date('Y-m-d h:i:s');
-	$add_query = 'SELECT name, prompt, points, from prompts where category = '. $category ;
-	echo $add_query;
-	$result = $db->query($add_query);
-
-	$row
+	$query = 'SELECT name, prompt, points from prompts where category = "'. $category.'"' ;
+	//echo $add_query;
+	$stmt = $db->prepare($query);
+		$stmt->execute();
+		$res = $stmt->get_result();
+		$numRows = $res->num_rows;
+		$i =0;
+		echo "<tr>";
+		for($row=0 ; $row<$numRows; $row++ ){
+			$tRow =$res->fetch_assoc();
+			if($i ==5){
+				echo "</tr><tr>";
+				$i = 0;
+			}
+			echo "<td><ul><li>".$tRow['name']." </li> <li>".$tRow['prompt']."</li><li>".$tRow['points']."</li></ul></td>";
+			++$i;
+		}
+		$stmt->close();
 	
 	
-	echo $prompt_id;
-
-	return $prompt_id;
+	return 0;
 	
 	
 }
