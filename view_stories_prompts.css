@@ -35,7 +35,7 @@
 		float: left;
 		position: fixed;
 		margin: 0 0 -20px;
-		background-color: #FFAD33;
+		background-color: #8A0000;
 		opacity: .9;
 		width: 175px;
 		height: 40px;
@@ -70,7 +70,7 @@
 	}
 	a:hover, a:active {
 		text-decoration: none;
-		color: cyan;
+		color: #FFCC00;
 	}
 	
 	#genreHeader {

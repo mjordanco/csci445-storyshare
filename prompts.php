@@ -29,9 +29,6 @@
 	<div id="center">
 		<h2 id="genreHeader">Current Genre: Action</h2>
 		
-		<div class="storyBox">
-		</div>
-		
 	</div>
 	</div>
 	
