@@ -112,7 +112,10 @@ function register_user($username, $password, $firstname, $lastname) {
 
 	$db = open_db();
 
-	$options = ['cost' => 11, 'salt' => mcrypt_create_iv(22, MCRYPT_DEV_URANDOM)];
+	$options = array(
+		'cost' => 11, 
+		'salt' => mcrypt_create_iv(22, MCRYPT_DEV_URANDOM)
+	);
 
 	$encrypted_password = password_hash($password, PASSWORD_BCRYPT, $options);
 	
