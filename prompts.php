@@ -4,8 +4,11 @@
 		include_once('phplibs.php');
 	?>
 <link rel="stylesheet" type="text/css" href="view_stories_prompts.css">
-<style>
-
+	<style type="text/css">
+		table {
+			padding: 10px;
+		}
+		
 </style>
 </head>
 <body>
@@ -28,9 +31,16 @@
 	
 	<div id="center">
 		<h2 id="genreHeader">Current Genre: Action</h2>
-		
+		<table name= "pTable" border="1">
+		<?php
+			get_prompts( "action");
+		?>
+	
+	</table>
 	</div>
+	
 	</div>
+	
 	
 </body>
 </html>

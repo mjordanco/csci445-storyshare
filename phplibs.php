@@ -164,6 +164,34 @@ function submit_prompt($name, $category, $prompt, $points, $user_id) {
 	
 	
 }
+function get_prompts( $category) {
+
+	$db = open_db();
+
+	$query = 'SELECT name, prompt, points from prompts where category = "'. $category.'"' ;
+	//echo $add_query;
+	$stmt = $db->prepare($query);
+		$stmt->execute();
+		$res = $stmt->get_result();
+		$numRows = $res->num_rows;
+		$i =0;
+		echo "<tr>";
+		for($row=0 ; $row<$numRows; $row++ ){
+			$tRow =$res->fetch_assoc();
+			if($i ==5){
+				echo "</tr><tr>";
+				$i = 0;
+			}
+			echo "<td><ul><li>".$tRow['name']." </li> <li>".$tRow['prompt']."</li><li>".$tRow['points']."</li></ul></td>";
+			++$i;
+		}
+		$stmt->close();
+	
+	
+	return 0;
+	
+	
+}
 function submit_story($title, $genre, $rating, $story, $prompt_id, $user_id, $points, $submit_date){
 	$db = open_db();
 	$submit_date = date('Y-m-d');
