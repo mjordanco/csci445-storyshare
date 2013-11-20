@@ -138,20 +138,19 @@ function submit_prompt($name, $category, $prompt, $points, $user_id) {
 	
 	
 }
-function submit_story($name, $category, $rating, $story, $points, $user_id){
+function submit_story($title, $genre, $rating, $story, $prompt_id, $user_id, $points, $submit_date){
 	$db = open_db();
-	$curdate = date('Y-m-d');
-	$add_query = 'INSERT INTO stories(name, story, prompt_id, points, submit_date, user_id) VALUES("' . $name . '", "' . $story . '", "' . 1 . '","' . $points . '", "'. $curdate .'", ' . $user_id . ')';
+	$submit_date = date('Y-m-d');
+	$add_query = 'INSERT INTO stories(title, genre, rating, story, prompt_id, user_id, points, submit_date) VALUES("' . $title . '", "' . $genre . '", "' . $rating . '", "' . $story . '", "' . 1 . '","' . $user_id . '", "'. $points .'", ' . $submit_date . ')';
 	echo $add_query;
 	$db->query($add_query);
 
-	$prompt_id = $db->insert_id;
-	echo $prompt_id;
+	$story_id = $db->insert_id;
+	echo $story_id;
 
-	return $prompt_id;
-
-
+	return $story_id;
 }
+
 session_start();
 
 ?>

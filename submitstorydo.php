@@ -22,19 +22,21 @@
 	<section id="submit_box">
 		<?php
 
-			$name = $_POST['name'];
-			$category = $_POST['genre'];
+			$title = $_POST['title'];
+			$genre = $_POST['genre'];
 			$rating = $_POST['rating'];
 			$story = $_POST['story'];
-			$points = 0;
-			$user_id = $_SESSION['user_id'];
+			
+            $prompt_id = $_SESSION['prompt_id'];
+            $user_id = $_SESSION['user_id'];
+	        $points = 0;
+            $current_date = date("Y-m-d");
 
-			if ($name == "" || $category == "" || $story == "" || $rating == "") {
+			if ($title == "" || $genre == "" || $rating == "" || $story == "") {
 				echo 'All fields must be filled out to submit a story! Go back and try again!';
 			}
 
-			submit_story($name, $category, $rating, $story, $points, $user_id);
-
+			submit_story($title, $genre, $rating, $story, $prompt_id, $user_id, $points, $submit_date);
 			header('Location: ./');
 		
 		?>
