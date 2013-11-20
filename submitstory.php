@@ -32,15 +32,7 @@
     <section id="box">
 			
         <form method="post" action="submitstorydo.php">
-			<input name="name" type="text" placeholder="Title*" /><br>
-			<p>Rating: Select an appropriate audience rating for your story</p>
-			<select name="rating" size="1">
-				<option value="NA" selected> Select One</option>
-				<option value="G">G </option>
-				<option value="PG-13">PG-13</option>
-				<option value="R">R</option>
-			</select>
-            <br>
+			<input name="title" type="text" placeholder="Title*" /><br>
 			
 			<p>Genre: Select the genre that best describes your story</p>
 			<select name="genre">
@@ -56,6 +48,16 @@
 			</select>
             <br>
 
+            <p>Rating: Select an appropriate audience rating for your story</p>
+			<select name="rating" size="1">
+				<option value="NA" selected> Select One</option>
+				<option value="G">G</option>
+                <option value="PG">PG</option>
+				<option value="PG-13">PG-13</option>
+				<option value="R">R</option>
+			</select>
+            <br>
+            
 			<textarea id="submit_story" name="story" rows="40" columns="30"></textarea><br>
 			<button type="submit">Submit Story</button>
 		</form>
