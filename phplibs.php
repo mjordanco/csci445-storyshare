@@ -212,6 +212,48 @@ function submit_story($name, $genre, $rating, $story, $prompt_id, $user_id, $poi
 	return $story_id;
 }
 
+function display_table($name, $genre) {
+    $db = open_db(); 
+    $query = "SELECT * FROM $name";
+    $result = $db->query($query);
+    $num_results = $result->num_rows;
+
+    echo "<table id='names'>";
+    $column = 0;
+    $entries = 0;
+    for ($i=0; $i < $num_results; $i++) {
+        if ($column == 0) {
+            echo "<tr>";
+        }
+        if ($column == 4) {
+            echo "</tr>";
+            $column = 0;
+        }
+                    
+        $row = $result->fetch_assoc();
+        echo "<td>".$row['name']."</td>";
+        $column++;
+        $entries++;
+    }
+    
+    while ($entries < 20) {
+        if ($column == 0) {
+            echo "<tr>";
+        }
+        if ($column == 4) {
+            echo "</tr>";
+            $column = 0;
+        }
+                
+        echo "<td></td>";
+        $column++;
+        $entries++;
+    }
+
+    echo "</table>";
+    echo "<br>";
+}
+
 session_start();
 
 ?>

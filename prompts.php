@@ -5,59 +5,7 @@
 	?>
 <link rel="stylesheet" type="text/css" href="view_stories_prompts.css">
 	<style type="text/css">
-        table {
-            border-spacing: 0;
-            table-layout: fixed;
-            vertical-align: middle;
-            font-size: large;
-            font-family: "Times New Roman", Georgia, Palatino, serif;
-            width: 80%;
-            margin: auto;
-            margin-top: 15px;
-        }
-        
-        /*Sets the style for the entire table*/
-        #names {
-            border: 5px solid #666633;
-            border-collapse: collapse;
-            text-align: center;
-        }
-        
-        /*Sets the style for the column labels*/
-        #names th {
-            background-color: #666633;
-            color: white;
-        }
-        
-        /*Sets border on all sides on our table data*/
-        #names td {
-            border: 2px solid #666633;
-        } 
-        
-        /*Changes background for every odd numbered row*/
-        #names tr:nth-of-type(odd) {
-            background: #A3C266;
-        }
-        
-        /*Styles the captions above*/
-        caption {
-            font-family: Verdana, Arial, Tahoma, sans-serif;
-            font-weight: bold;
-            padding-bottom: 5px;
-        }
-        
-        /*Styles the tables header*/
-        th {
-            font-family: Verdana, Arial, Tahoma, sans-serif;
-            font-size: medium;
-        }
-        
-        /*Ensures padding around data*/
-        td {
-            padding: 100px 5px 100px 5px;
-            text-align: center;
-        }
-		
+      
 </style>
 </head>
 <body>
@@ -83,45 +31,7 @@
 	<div id="center">
 		<h2 id="genreHeader">Current Genre: Action</h2>
         <?php
-            $db = open_db(); 
-            $query = "SELECT * FROM prompts";
-            $result = $db->query($query);
-            $num_results = $result->num_rows;
-
-            echo "<table id='names'>";
-            $column = 0;
-            $entries = 0;
-            for ($i=0; $i < $num_results; $i++) {
-                if ($column == 0) {
-                    echo "<tr>";
-                }
-                if ($column == 4) {
-                    echo "</tr>";
-                    $column = 0;
-                }
-                    
-                $row = $result->fetch_assoc();
-                echo "<td>".$row['name']."</td>";
-                $column++;
-                $entries++;
-            }
-    
-            while ($entries < 20) {
-                if ($column == 0) {
-                    echo "<tr>";
-                }
-                if ($column == 4) {
-                    echo "</tr>";
-                    $column = 0;
-                }
-                
-                echo "<td></td>";
-                $column++;
-                $entries++;
-            }
-
-            echo "</table>";
-            echo "<br>";
+            display_table("prompts", "Action");
         ?>
 	
 	</table>
