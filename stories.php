@@ -33,7 +33,7 @@
 	<div id="center">
 		<h2 id="genreHeader">Current Genre: Action</h2>
         <?php
-            display_table("stories", "story", "View All");
+            display_table("stories", "story", $_SESSION['genre']);
         ?>
 		
 	</div>

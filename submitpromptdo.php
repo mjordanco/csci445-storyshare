@@ -24,18 +24,18 @@
 		<?php
 
 			$name = $_POST['name'];
-			$category = $_POST['category'];
+			$genre = $_POST['genre'];
 			$prompt = $_POST['prompt'];
             $safe_prompt = addslashes($prompt);
 
 			$points = 0;
 			$user_id = $_SESSION['user_id'];
 
-			if ($name == "" || $category == "" || $prompt == "") {
+			if ($name == "" || $genre == "" || $prompt == "") {
 				echo 'All fields must be filled out to submit a prompt! Go back and try again!';
 			}
 
-			submit_prompt($name, $category, $safe_prompt, $points, $user_id);
+			submit_prompt($name, $genre, $safe_prompt, $points, $user_id);
 
 			header('Location: ./');
 
