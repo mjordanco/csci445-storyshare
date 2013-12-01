@@ -165,7 +165,9 @@ function get_prompts( $category) {
 				echo "</tr><tr>";
 				$i = 0;
 			}
-			echo "<td><ul><li>".$tRow['name']." </li> <li>".$tRow['prompt']."</li><li>".$tRow['points']."</li></ul></td>";
+			echo "<td><ul class=\"pBox\"><li class=\"left\">Title:</li><li class=\"right\">".$tRow['name']." </li> 
+			<li class=\"left\">Prompt:</li><li class=\"right\">".$tRow['prompt']."</li></ul><ul class =\"dispP\">
+			<li class=\"poin\">Points: </li><li class=\"pright\">".$tRow['points']."</li></ul></td>";
 			++$i;
 		}
 		$stmt->close();
