@@ -32,7 +32,7 @@
     <section id="box">
 			
         <form method="post" action="submitstorydo.php">
-			<input name="title" type="text" placeholder="Title*" /><br>
+			<input name="title" type="text" placeholder="Title*"/><br>
 			
 			<p>Genre: Select the genre that best describes your story</p>
 			<select name="genre">

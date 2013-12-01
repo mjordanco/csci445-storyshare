@@ -21,26 +21,21 @@
 
 	<section id="submit_box">
 		<?php
-           
-            $db = open_db();
-
-			$name = $_POST['name'];
+			$title = $_POST['title'];
 			$genre = $_POST['genre'];
 			$rating = $_POST['rating'];
 			$story = $_POST['story'];
 			
-            $prompt_id = 1;
+            $prompt_id = 0;
             $user_id = $_SESSION['user_id'];
 	        $points = 0;
 
-			if ($name == "" || $genre == "" || $rating == "" || $story == "") {
+			if ($title == "" || $genre == "" || $rating == "" || $story == "") {
 				echo 'All fields must be filled out to submit a story! Go back and try again!';
 			}
 
 			submit_story($title, $genre, $rating, $story, $prompt_id, $user_id, $points);
-            echo "Just called our submit story function";
 			header('Location: ./');
-		
 		?>
 	</section>
 </body>
