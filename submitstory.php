@@ -20,6 +20,32 @@
             padding: 10px 10px 10px 10px;
             margin: 15px 15px 15px 15px;
         }
+		form {
+            display: block;
+            padding : 5px;
+		}
+		input, button {
+			margin-top: 10px;
+		}
+		textarea{
+			margin-top: 10px;
+			width: 74%;
+			resize: none;
+			height: 14%;
+		}
+		select {
+            width: 30%;
+            height: 30px;
+            font-size: 20px;	
+		}
+        p {
+            font-size: large;
+            color: white;
+        }
+        button {
+            font-size: large;
+            border-radius: 1px;
+        }
 	</style>
 </head>
 <body>
@@ -36,7 +62,7 @@
 			
 			<p>Genre: Select the genre that best describes your story</p>
 			<select name="genre" required>
-                <option value="NA" selected> Select One</option>
+                <option value="None" selected> Select One</option>
   				<option value="Action">Action</option>
   				<option value="Adventure">Adventure</option>
   				<option value="Comedy">Comedy</option>
@@ -52,7 +78,7 @@
 
             <p>Rating: Select an appropriate audience rating for your story</p>
 			<select name="rating" size="1" required>
-				<option value="NA" selected> Select One</option>
+				<option value="None" selected> Select One</option>
 				<option value="G">G</option>
                 <option value="PG">PG</option>
 				<option value="PG-13">PG-13</option>

@@ -6,7 +6,7 @@
 	<style type="text/css">
 		#submit_box {
 			width:75%;
-			background-color: #8493CA;
+			background-color: #8A0000;
 
 			border-style: solid;
 			border-width: 1px;
@@ -31,6 +31,10 @@
 				height: 30px;
 				font-size: 20px;	
 		}	
+        button {
+            font-size: large;
+            border-radius: 1px;
+        }
 	</style>
 </head>
 <body>
@@ -41,7 +45,7 @@
 		<form method="post" action="submitpromptdo.php">
 			<input name="name" type="text" placeholder="Prompt Name..." required/><br>
 			<select name="category">
-  				 <option value="NA" selected> Select One</option>
+  				 <option value="Noe" selected> Select One</option>
   				<option value="Action">Action</option>
   				<option value="Adventure">Adventure</option>
   				<option value="Comedy">Comedy</option>

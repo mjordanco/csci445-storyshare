@@ -5,7 +5,7 @@
 	<style type="text/css">
 		#submit_box {
 			width:75%;
-			background-color: #8493CA;
+			background-color: #8A0000;
 
 			border-style: solid;
 			border-width: 1px;
