@@ -26,7 +26,7 @@
 			$rating = $_POST['rating'];
 			$story = $_POST['story'];
 			
-            $prompt_id = 0;
+            $prompt_id = $_POST['prompt_id'];
             $user_id = $_SESSION['user_id'];
 	        $points = 0;
 

@@ -41,15 +41,17 @@
 		<form method="post" action="submitpromptdo.php">
 			<input name="name" type="text" placeholder="Prompt Name..." required/><br>
 			<select name="category">
-  				<option value="action">Action</option>
-  				<option value="adventure">Adventure</option>
-  				<option value="comedy">Comedy</option>
-  				<option value="drama">Drama</option>
- 				<option value="history">History</option>
-  				<option value="horror">Horror</option>
-  				<option value="romance">Romance</option>
-  				<option value="scifi">Sci-Fi</option>
-                <option value="other">Other</option>
+  				 <option value="NA" selected> Select One</option>
+  				<option value="Action">Action</option>
+  				<option value="Adventure">Adventure</option>
+  				<option value="Comedy">Comedy</option>
+  				<option value="Drama">Drama</option>
+                <option value="Fantasy">Fantasy</option>
+ 				<option value="History">History</option>
+  				<option value="Horror">Horror</option>
+  				<option value="Romance">Romance</option>
+  				<option value="Scifi">Sci-Fi</option>
+                <option value="Other">Other</option>
 			</select> <br>
 			<textarea name="prompt" required maxlength="250"></textarea><br>
 			<button type="submit">Submit Prompt</button>
