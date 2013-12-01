@@ -35,6 +35,9 @@
             font-size: large;
             border-radius: 1px;
         }
+        textarea {
+            font-size: large;
+        }
 	</style>
 </head>
 <body>
