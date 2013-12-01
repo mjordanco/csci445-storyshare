@@ -21,7 +21,7 @@
 
 	<section id="submit_box">
 		<?php
-			$title = $_POST['title'];
+			$name = $_POST['name'];
 			$genre = $_POST['genre'];
 			$rating = $_POST['rating'];
 			$story = $_POST['story'];
@@ -30,11 +30,11 @@
             $user_id = $_SESSION['user_id'];
 	        $points = 0;
 
-			if ($title == "" || $genre == "" || $rating == "" || $story == "") {
+			if ($name == "" || $genre == "" || $rating == "" || $story == "") {
 				echo 'All fields must be filled out to submit a story! Go back and try again!';
 			}
 
-			submit_story($title, $genre, $rating, $story, $prompt_id, $user_id, $points);
+			submit_story($name, $genre, $rating, $story, $prompt_id, $user_id, $points);
 			header('Location: ./');
 		?>
 	</section>
