@@ -181,7 +181,7 @@ function submit_prompt($name, $category, $prompt, $points, $user_id) {
 	$db = open_db();
 
 	$curdate = date('Y-m-d h:i:s');
-	$add_query = 'INSERT INTO prompts(name, category, prompt, points, submit_date, user_id) VALUES("' . $name . '", "' . $category . '", "' . $prompt . '", "' . $points .'", "'. $curdate  .'", "' . $user_id . ')';
+	$add_query = 'INSERT INTO prompts(name, category, prompt, points, submit_date, user_id) VALUES("'.$name.'", "'. $category.'", "'.$prompt.'", "'.$points.'", "'.$curdate.'", "'.$user_id.'")';
 	echo $add_query;
 	$db->query($add_query);
 
