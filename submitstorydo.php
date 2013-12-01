@@ -30,9 +30,9 @@
             $user_id = $_SESSION['user_id'];
 	        $points = 0;
 
-			if ($name == "" || $genre == "" || $rating == "" || $story == "") {
+			/*if ($name == "" || $genre == "" || $rating == "" || $story == "") {
 				echo 'All fields must be filled out to submit a story! Go back and try again!';
-			}
+			}*/
 
 			submit_story($name, $genre, $rating, $story, $prompt_id, $user_id, $points);
 			header('Location: ./');

@@ -199,9 +199,16 @@ function submit_story($name, $genre, $rating, $story, $prompt_id, $user_id, $poi
     
 	$date = date('Y-m-d h:i:s');
     
-+	$add_query = 'INSERT INTO stories(name, genre, rating, story, prompt_id, user_id, points, submit_date) VALUES("'.$name.'", "'.$genre.'", "'.$rating.'", "'.$story.'", "'.$prompt_id.'", "'.$user_id.'", 0, null")';
++	$add_query = 'INSERT INTO stories(name, genre, rating, story, prompt_id, user_id, points, submit_date) VALUES("'.$name.'", "'.$genre.'", "'.$rating.'", "'.$story.'", "'.$prompt_id.'", 3, 0, null)';
 	echo $add_query;
-	$db->query($add_query);
+    $db->query($add_query);
+	/*$result = $db->query($add_query);
+    
+    if ($result) {
+        echo $db->affected_rows." was successfully submitted.";
+    } else {
+        echo "An error has occured. The item was not submitted.";
+    }*/
 
     /*$add_query2 = 'INSERT INTO stories(name, genre, rating, story, prompt_id, user_id, points, submit_date) VALUES("Rabbit", "Comedy", "G", "The rabbit lost to the turtle because the turtle was too clever.", null, 3, 0, null)';
 	echo $add_query2;
