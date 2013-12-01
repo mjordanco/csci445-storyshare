@@ -212,7 +212,7 @@ function submit_story($name, $genre, $rating, $story, $prompt_id, $user_id, $poi
 	return $story_id;
 }
 
-function display_table($name, $genre) {
+function display_table($name, $text, $genre) {
     $db = open_db(); 
     $query = "SELECT * FROM $name";
     $result = $db->query($query);
@@ -231,7 +231,14 @@ function display_table($name, $genre) {
         }
                     
         $row = $result->fetch_assoc();
-        echo "<td>".$row['name']."</td>";
+        echo "<td id='specialCell' class='hoverClass'>";
+            echo "<span class='noHover'>".$row['name']."</span>";
+            if ($text == "prompt") {
+                echo "<span class='hover'>".$row['prompt']."</span>";
+            } else {
+                echo "<span class='hover'>".$row['story']."</span>";
+            }
+        echo "</td>";
         $column++;
         $entries++;
     }

@@ -71,6 +71,9 @@
 	#tenth {
 		margin: 405px 0 405px 0;
 	}
+    #eleventh {
+		margin: 450px 0 450px 0;
+	}
 	a:link, a:visited {
 		text-decoration: none;
 		color: white;
@@ -147,6 +150,22 @@
     td {
         padding: 100px 5px 100px 5px;
         text-align: center;
+    }
+
+    #specialCell .hover{
+        display:none;
+    }
+
+    #specialCell .noHover{
+        display:block;
+    }
+
+    #specialCell:hover .hover{
+        display:block;
+    }
+
+    #specialCell:hover .noHover{
+        display:none;
     }
 		
 	
