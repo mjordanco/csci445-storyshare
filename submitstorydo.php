@@ -25,16 +25,17 @@
 			$genre = $_POST['genre'];
 			$rating = $_POST['rating'];
 			$story = $_POST['story'];
-			
+            $safe_story = addslashes($story);
+
             $prompt_id = $_POST['prompt_id'];
             $user_id = $_SESSION['user_id'];
 	        $points = 0;
 
-			/*if ($name == "" || $genre == "" || $rating == "" || $story == "") {
+			if ($name == "" || $genre == "" || $rating == "" || $story == "") {
 				echo 'All fields must be filled out to submit a story! Go back and try again!';
-			}*/
+			}
 
-			submit_story($name, $genre, $rating, $story, $prompt_id, $user_id, $points);
+			submit_story($name, $genre, $rating, $safe_story, $prompt_id, $user_id, $points);
 			header('Location: ./');
 		?>
 	</section>
