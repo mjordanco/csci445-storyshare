@@ -38,6 +38,9 @@
             height: 30px;
             font-size: 20px;	
 		}
+        #php_select {
+            height: 100px;
+        }
         p {
             font-size: large;
             color: white;
@@ -97,7 +100,7 @@
                 $result = $db->query($query);
                 $num_results = $result->num_rows;
 
-                echo "<select name='prompt_id' size='10' required>";
+                echo "<select name='prompt_id' size='10' id='php_select' required>";
                 for ($i=0; $i < $num_results; $i++) {
                     $row = $result->fetch_assoc();
                      echo "<option value=".$row['id'].">".$row['name']."</option>";
@@ -108,7 +111,9 @@
          
             ?>
             
-			<textarea id="submit_story" name="story" rows="40" columns="30" required></textarea><br>
+			<textarea id="submit_story" name="story" rows="40" columns="30" required></textarea>
+            <br>
+            <br>
 			<button type="submit">Submit Story</button>
 		</form>
 	

@@ -48,7 +48,7 @@
 		<form method="post" action="submitpromptdo.php">
 			<input name="name" type="text" placeholder="Prompt Name..." required/><br>
 			<select name="category">
-  				 <option value="Noe" selected> Select One</option>
+  				 <option value="None" selected> Select One</option>
   				<option value="Action">Action</option>
   				<option value="Adventure">Adventure</option>
   				<option value="Comedy">Comedy</option>

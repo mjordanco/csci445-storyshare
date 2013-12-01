@@ -177,7 +177,6 @@ function get_prompts( $category) {
 }
 
 function submit_prompt($name, $category, $prompt, $points, $user_id) {
-
 	$db = open_db();
 
 	$curdate = date('Y-m-d h:i:s');
@@ -189,12 +188,9 @@ function submit_prompt($name, $category, $prompt, $points, $user_id) {
 	echo $prompt_id;
 
 	return $prompt_id;
-	
-	
 }
 
 function submit_story($name, $genre, $rating, $story, $prompt_id, $user_id, $points) {
-	
     $db = open_db();
     
 	$date = date('Y-m-d h:i:s');
@@ -209,10 +205,6 @@ function submit_story($name, $genre, $rating, $story, $prompt_id, $user_id, $poi
     } else {
         echo "An error has occured. The item was not submitted.";
     }*/
-
-    /*$add_query2 = 'INSERT INTO stories(name, genre, rating, story, prompt_id, user_id, points, submit_date) VALUES("Rabbit", "Comedy", "G", "The rabbit lost to the turtle because the turtle was too clever.", null, 3, 0, null)';
-	echo $add_query2;
-	$db->query($add_query2);*/
     
 	$story_id = $db->insert_id;
 	echo $story_id;
