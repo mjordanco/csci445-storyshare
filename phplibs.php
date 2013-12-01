@@ -181,7 +181,7 @@ function submit_prompt($name, $category, $prompt, $points, $user_id) {
 	$db = open_db();
 
 	$curdate = date('Y-m-d h:i:s');
-	$add_query = 'INSERT INTO prompts(name, category, prompt, points, submit_date, user_id) VALUES("' . $name . '", "' . $category . '", "' . $prompt . '", "' . $points .'","'. $curdate  .'", ' . $user_id . ')';
+	$add_query = 'INSERT INTO prompts(name, category, prompt, points, submit_date, user_id) VALUES("' . $name . '", "' . $category . '", "' . $prompt . '", "' . $points .'","'. $curdate  .'", "' . $user_id . ')';
 	echo $add_query;
 	$db->query($add_query);
 
@@ -193,15 +193,19 @@ function submit_prompt($name, $category, $prompt, $points, $user_id) {
 	
 }
 
-function submit_story($name, $genre, $rating, $story, $prompt_id, $user_id, $points){
+function submit_story($name, $genre, $rating, $story, $prompt_id, $user_id, $points) {
 	
     $db = open_db();
     
 	$date = date('Y-m-d h:i:s');
     
-	$add_query = 'INSERT INTO stories VALUES("'.$name.'", "'.$genre.'", "'.$rating.'", "'.$story.'", "'.$prompt_id.'","'.$user_id.'", "'.$points.'", "'.$date.')';
+	$add_query = 'INSERT INTO stories(name, genre, rating, story, prompt_id, user_id, points, submit_date) VALUES("'.$name.'", "'.$genre.'", "'.$rating.'", "'.$story.'", "'.$prompt_id.'","'.$user_id.'", "'.$points.'", "'.$date.')';
 	echo $add_query;
 	$db->query($add_query);
+    
+    $test_query = 'INSERT INTO stories(name, genre, rating, story, prompt_id, user_id, points, submit_date) VALUES("Turtle", "Action", "G", "I am Yertle the Turtle! Oh, marvelous me! For I am the ruler of all that I see!", 1, 3, 500, null)';
+	echo $test_query;
+	$db->query($test_query);
 
 	$story_id = $db->insert_id;
 	echo $story_id;
