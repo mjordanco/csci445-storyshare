@@ -15,7 +15,8 @@
 </style>
 <script type="text/javascript">
 function readStory() {
-    document.location.href = "http://www.google.com";
+    //document.location.href = "http://www.google.com";
+    document.location.href = "fullStory.php";
 }
 </script>
 </head>
