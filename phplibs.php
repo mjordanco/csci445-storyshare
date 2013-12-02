@@ -246,7 +246,9 @@ function display_table($name, $text, $genre) {
                 } else {
                     echo "<span class='hover'>".$row['story']."</span>";
                 }
-            echo "</td>";
+            echo " <form method=\"post\" action=\"submitupdo.php\"></form> <button type=\"submit\"><img src=\"./upArrow.bmp\"  width=\"20\" height=\"30\"></button></form>
+			</div><div class =\"rightF\">
+			<form method=\"post\" action=\"submitdowndo.php\"></form> <button type=\"submit\"><img src=\"./downArrow.bmp\"  width=\"20\" height=\"30\"></button></form></div></td>";
             $column++;
             $entries++;
         } 
