@@ -277,13 +277,10 @@ function displayStory($storyID) {
         $query = "SELECT * FROM stories WHERE id=$storyID";
         $result = $db->query($query);
         $storyRow = $result->fetch_assoc();
-
-        echo "<p style='font-size: medium;'>".$storyRow['story']."</p>";
     
-	    /*echo "<div class='featured_bottom'>";
-            echo "<h3>Submitted by ".$featured['user_id']."</h3>";
-		echo "<a href='./'><button type='button'>Continue Reading...</button></a>";
-	    echo "</div>";*/
+        echo "<h2 style='color: #CC0000;'>".$storyRow['name']."</h2>";
+        echo "<br>";
+        echo "<p style='font-size: medium;'>".$storyRow['story']."</p>";
 }
 
 function getUserName($userId){
