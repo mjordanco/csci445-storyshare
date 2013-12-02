@@ -231,7 +231,7 @@ function display_table($name, $text, $genre) {
         $row = $result->fetch_assoc();
         if (($genre == "View All") || ($genre == $row['genre'])) {
             echo "<td id='specialCell' class='hoverClass'>";
-                echo "<span class='noHover'>".$row['name']."</span>";
+                echo "<span class='noHover' OnClick='readStory()'>".$row['name']."</span>";
             
                 if ($text == "prompt") {
                     $str = $row['prompt'];
@@ -242,7 +242,7 @@ function display_table($name, $text, $genre) {
                 if (strlen($str) > 100) {
                     $str = substr($str, 0, 100) . "...";
                 }
-                echo "<span class='hover'>".$str."</span>";
+                echo "<span class='hover' OnClick='readStory()'>".$str."</span>";
             
             
             echo " <form method=\"post\" action=\"submitupdo.php\"></form> <button type=\"submit\"><img src=\"./upArrow.bmp\"  width=\"20\" height=\"30\"></button></form>

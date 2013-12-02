@@ -12,8 +12,12 @@
 		.rightF {
 			float:right;
 		}
-
 </style>
+<script type="text/javascript">
+function readStory() {
+    document.location.href = "http://www.google.com";
+}
+</script>
 </head>
 <body>
 	<?php
