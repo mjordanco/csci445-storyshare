@@ -229,9 +229,10 @@ function display_table($name, $text, $genre) {
         }
         
         $row = $result->fetch_assoc();
+        $storyID = $row['id'];
         if (($genre == "View All") || ($genre == $row['genre'])) {
             echo "<td id='specialCell' class='hoverClass'>";
-                echo "<span class='noHover' OnClick='readStory()'>".$row['name']."</span>";
+                echo "<span class='noHover' OnClick='readStory(".$storyID.")'>".$row['name']."</span>";
             
                 if ($text == "prompt") {
                     $str = $row['prompt'];
@@ -242,7 +243,7 @@ function display_table($name, $text, $genre) {
                 if (strlen($str) > 100) {
                     $str = substr($str, 0, 100) . "...";
                 }
-                echo "<span class='hover' OnClick='readStory()'>".$str."</span>";
+                echo "<span class='hover' OnClick='readStory(".$storyID.")'>".$str."</span>";
             
             
             echo " <form method=\"post\" action=\"submitupdo.php\"></form> <button type=\"submit\"><img src=\"./upArrow.bmp\"  width=\"20\" height=\"30\"></button></form>
@@ -270,6 +271,21 @@ function display_table($name, $text, $genre) {
     echo "</table>";
     echo "<br>";
 }
+
+function displayStory($storyID) {
+        $db = open_db(); 
+        $query = "SELECT * FROM stories WHERE id=$storyID";
+        $result = $db->query($query);
+        $storyRow = $result->fetch_assoc();
+
+        echo "<p style='font-size: medium;'>".$storyRow['story']."</p>";
+    
+	    /*echo "<div class='featured_bottom'>";
+            echo "<h3>Submitted by ".$featured['user_id']."</h3>";
+		echo "<a href='./'><button type='button'>Continue Reading...</button></a>";
+	    echo "</div>";*/
+}
+
 function getUserName($userId){
 	$userName = "";
 	 $db = open_db(); 
@@ -282,6 +298,7 @@ function getUserName($userId){
 	}
 	return $userName;
 }
+
 function display_prompts_trophies($startweek, $stopweek) {
     $db = open_db(); 
     $query = "SELECT * FROM prompts Where submit_date < \"$stopweek\" AND submit_date > \"$startweek\" ORDER BY points DESC";

@@ -14,9 +14,9 @@
 		}
 </style>
 <script type="text/javascript">
-function readStory() {
+function readStory(storyID) {
     //document.location.href = "http://www.google.com";
-    document.location.href = "fullStory.php";
+    document.location.href = "fullStory.php?storyNum=" + storyID.toString();
 }
 </script>
 </head>

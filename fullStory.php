@@ -16,7 +16,7 @@ print_header("index");
 
 <section class="featured">
     <?php
-        $storyID = htmlspecialchars($_GET['storyID']);
+        $storyID = htmlspecialchars($_GET['storyNum']);
         displayStory($storyID);
     ?>
 </section>
