@@ -264,6 +264,26 @@ function display_table($name, $text, $genre) {
     echo "<br>";
 }
 
+function displayFeatured($table_name, $typeTitle, $body) {
+        $db = open_db(); 
+        $query = "SELECT * FROM $table_name";
+        $result = $db->query($query);
+        $num_results = $result->num_rows;
+        $rand = rand(1, $num_results-1);
+
+        for ($i=0; $i < $rand; $i++) {
+            $row = $result->fetch_assoc();
+        }
+        $featured = $row;
+
+        echo "<h1>Featured $typeTitle: ".$featured['name']."</h1>";
+        echo "<p>".$featured[$body]."</p>";
+	    echo "<div class='featured_bottom'>";
+            echo "<h3>Submitted by ".$featured['user_id']."</h3>";
+		echo "<a href='./'><button type='button'>Continue Reading...</button></a>";
+	    echo "</div>";
+}
+
 session_start();
 
 ?>

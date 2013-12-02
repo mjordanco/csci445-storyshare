@@ -6,6 +6,7 @@
 	<link rel="stylesheet" type="text/css" href="theme.css">
 	<style type="text/css">
 		.featured {
+            color: white;
 		}
 
 		.featured .featured_bottom {
@@ -28,21 +29,15 @@ print_header("index");
 ?>
 
 <section class="featured">
-	<h1>Featured Prompt: Titletitletitle</h1>
-	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sed commodo metus, in gravida felis. Sed porttitor, ipsum eu semper dignissim, neque lorem lacinia dui, eget sagittis mauris sem quis ante. Etiam bibendum justo at risus aliquam feugiat. Sed imperdiet lorem at malesuada mollis. Sed sed neque in velit aliquet rutrum. Suspendisse hendrerit, leo vitae suscipit aliquet, nunc justo ornare mauris, nec ultricies diam neque dictum sem. Pellentesque feugiat tempor orci et porta. Sed vestibulum arcu vitae mi faucibus pretium. Mauris sed lacus eget dui consequat rhoncus ac et lorem. Aenean eu odio velit. Quisque gravida dictum semper. Duis porttitor orci dui, in rutrum nisi egestas venenatis.</p>
-	<div class="featured_bottom">
-		<h3>Submitted by Matthew Jordan</h3>
-		<a href="./"><button type="button">Finish The Story...</button></a>
-	</div>
+    <?php
+        displayFeatured("prompts", "Prompt", "prompt");
+    ?>
 </section>
 
 <section class="featured">
-	<h1>Featured Story: Titletitletitle</h1>
-	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sed commodo metus, in gravida felis. Sed porttitor, ipsum eu semper dignissim, neque lorem lacinia dui, eget sagittis mauris sem quis ante. Etiam bibendum justo at risus aliquam feugiat. Sed imperdiet lorem at malesuada mollis. Sed sed neque in velit aliquet rutrum. Suspendisse hendrerit, leo vitae suscipit aliquet, nunc justo ornare mauris, nec ultricies diam neque dictum sem. Pellentesque feugiat tempor orci et porta. Sed vestibulum arcu vitae mi faucibus pretium. Mauris sed lacus eget dui consequat rhoncus ac et lorem. Aenean eu odio velit. Quisque gravida dictum semper. Duis porttitor orci dui, in rutrum nisi egestas venenatis.</p>
-	<div class="featured_bottom">
-		<h3>Submitted by Matthew Jordan</h3>
-		<a href="./"><button type="button">Read the rest...</button></a>
-	</div>
+    <?php
+        displayFeatured("stories", "Story", "story");
+    ?>
 </section>
 </body>
 </html>
