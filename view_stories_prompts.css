@@ -154,6 +154,7 @@
 
     #specialCell .hover{
         display:none;
+        font-weight: bold;
     }
 
     #specialCell .noHover{
@@ -162,10 +163,12 @@
 
     #specialCell:hover .hover{
         display:block;
+        font-weight: bold;
     }
 
     #specialCell:hover .noHover{
         display:none;
     }
+
 		
 	
