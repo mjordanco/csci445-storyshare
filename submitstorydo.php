@@ -36,7 +36,6 @@
 			}
 
 			submit_story($name, $genre, $rating, $safe_story, $prompt_id, $user_id, $points);
-			header('Location: ./');
 		?>
 	</section>
 </body>
