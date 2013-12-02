@@ -46,6 +46,12 @@
 			height: 20%;
 		}
 		
+		.leftF {
+			float:left;
+		}
+		.rightF {
+			float:right;
+		}
 </style>
 </head>
 <body>
@@ -67,11 +73,10 @@
 	<div class="sidebar" id="eigth"><a href="addLink">SCI-FI</a></div>
 	
 	<div id="center">
-		<h2 id="genreHeader">Current Genre: Action</h2>
+		<h2 id="genreHeader">Current Genre: <?php  $link = $_SESSION['link']; echo $link; if($link ==""){$link = "action";}?> </h2>
 		<table name= "pTable" border="1">
 		<?php
 			$link = $_SESSION['link'];
-			echo "link is: ".$link;
 			if($link ==""){
 			  $link = "action";
 			  }

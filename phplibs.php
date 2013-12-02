@@ -167,7 +167,11 @@ function get_prompts( $category) {
 			}
 			echo "<td><ul class=\"pBox\"><li class=\"left\">Title:</li><li class=\"right\">".$tRow['name']." </li> 
 			<li class=\"left\">Prompt:</li><li class=\"right\">".$tRow['prompt']."</li></ul><ul class =\"dispP\">
-			<li class=\"poin\">Points: </li><li class=\"pright\">".$tRow['points']."</li></ul></td>";
+			<li class=\"poin\">Points: </li><li class=\"pright\">".$tRow['points']."</li></ul> 
+			<div class=\"leftF\">
+			<form method=\"post\" action=\"submitupdo.php\"></form> <button type=\"submit\"><img src=\"./upArrow.bmp\"  width=\"20\" height=\"30\"></button></form>
+			</div><div class =\"rightF\">
+			<form method=\"post\" action=\"submitdowndo.php\"></form> <button type=\"submit\"><img src=\"./downArrow.bmp\"  width=\"20\" height=\"30\"></button></form></div></td>";
 			++$i;
 		}
 		$stmt->close();
