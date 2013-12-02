@@ -271,6 +271,53 @@ function display_table($name, $text, $genre) {
     echo "</table>";
     echo "<br>";
 }
+function getUserName($userId){
+	$userName = "";
+	 $db = open_db(); 
+    $query = "SELECT * FROM users Where id= \"$userId\" ";
+    $result = $db->query($query);
+    $num_results = $result->num_rows;
+	if($num_results == 1){
+		$row = $result->fetch_assoc();
+		$userName = $row['username'];
+	}
+	return $userName;
+}
+function display_prompts_trophies($startweek, $stopweek) {
+    $db = open_db(); 
+    $query = "SELECT * FROM prompts Where submit_date < \"$stopweek\" AND submit_date > \"$startweek\" ORDER BY points";
+    $result = $db->query($query);
+    $num_results = $result->num_rows;
+
+    #echo "<h1 style='padding: 0px 0px 0px 15px; color: #CC0000;'>Current ".ucfirst($text)." Genre: ".$genre."</h1>";
+    echo "<table id='names'>";
+    $column = 0;
+    $entries = 0;
+    for ($i=0; $i < 3; $i++) {
+        if ($column == 0) {
+            echo "<tr>";
+        }
+        if ($column == 4) {
+            echo "</tr>";
+            $column = 0;
+        }
+        
+        $row = $result->fetch_assoc();
+            echo "<td id='specialCell'>";
+                echo "UserName: ".getUserName($row['user_id'])."<br>";
+				echo "Points: ".$row['points']."<br>";
+				echo "Category: ".$row['category']."<br>";
+                echo "<span class='hover'>".$row['prompt']."</span>";
+               
+            echo " </td>";
+            $column++;
+        
+		
+    }
+	echo "</tr>";
+    echo "</table>";
+    echo "<br>";
+}
 
 function displayFeatured($table_name, $typeTitle, $body) {
         $db = open_db(); 

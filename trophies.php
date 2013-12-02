@@ -37,7 +37,11 @@
 Prompts:
 </div>
 <section id="promptbox">
-	
+	<?php 
+		$startweek = "2013-11-18";
+		$stopweek = "2013-12-01";
+		display_prompts_trophies($startweek, $stopweek);
+	?>
 </section>	
 
 <div id="sName">
