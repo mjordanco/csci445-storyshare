@@ -4,8 +4,13 @@
 		include_once('phplibs.php');
 	?>
 <link rel="stylesheet" type="text/css" href="view_stories_prompts.css">
-<style type="text/css">
-      
+	<style type="text/css">
+		.leftF {
+			float:left;
+		}
+		.rightF {
+			float:right;
+		}
 </style>
 
 </head>
@@ -17,7 +22,7 @@
     <div class="profile_img">
 		<img src="user_profile_pic_placeholder.png" alt="User profile picture">
 	</div>
-	
+
     <div class="sidebar" id="first"><a href="prompts.php?sortGenre=View All">VIEW ALL</a></div>
 	<div class="sidebar" id="second"><a href="prompts.php?sortGenre=Action">ACTION</a></div>
 	<div class="sidebar" id="third"><a href="prompts.php?sortGenre=Adventure">ADVENTURE</a></div>

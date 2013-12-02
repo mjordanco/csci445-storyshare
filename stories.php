@@ -5,7 +5,13 @@
 	?>
 	
 <link rel="stylesheet" type="text/css" href="view_stories_prompts.css">
-<style>
+<style type="text/css">
+	.leftF {
+			float:left;
+		}
+		.rightF {
+			float:right;
+		}
 
 </style>
 </head>
