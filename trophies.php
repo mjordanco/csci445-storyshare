@@ -24,6 +24,10 @@
 			text-align: left;
 			font-size: 25px;
 		}
+		td.specialCell {
+			background-color: #CC9922;
+			 border: 1px solid #666633;
+		}
 	</style>
 </head>
 <body>
@@ -48,7 +52,22 @@ Prompts:
 Stories:
 </div>
 <section id="storybox">
-	
+	<?php 
+		$startweek = "2013-11-17";
+		$stopweek = "2013-12-01";
+		display_stories_trophies($startweek, $stopweek);
+	?>
+</section>	
+
+<div id="sName">
+Past Prompts:
+</div>
+<section id="storybox">
+	<?php 
+		$startweek = "2013-11-17";
+		$stopweek = "2013-12-01";
+		display_stories_trophies($startweek, $stopweek);
+	?>
 </section>	
 </body>
 </html>
