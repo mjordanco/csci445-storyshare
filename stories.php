@@ -24,7 +24,7 @@
 		<img src="user_profile_pic_placeholder.png" alt="User profile picture">
 	</div>
 	
-     <div class="sidebar" id="first"><a href="stories.php?sortGenre=View All">VIEW ALL</a></div>
+    <div class="sidebar" id="first"><a href="stories.php?sortGenre=View All">VIEW ALL</a></div>
 	<div class="sidebar" id="second"><a href="stories.php?sortGenre=Action">ACTION</a></div>
 	<div class="sidebar" id="third"><a href="stories.php?sortGenre=Adventure">ADVENTURE</a></div>
 	<div class="sidebar" id="fourth"><a href="stories.php?sortGenre=Comedy">COMEDY</a></div>

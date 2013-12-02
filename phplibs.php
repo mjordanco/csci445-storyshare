@@ -241,11 +241,19 @@ function display_table($name, $text, $genre) {
         if (($genre == "View All") || ($genre == $row['genre'])) {
             echo "<td id='specialCell' class='hoverClass'>";
                 echo "<span class='noHover'>".$row['name']."</span>";
+            
                 if ($text == "prompt") {
-                    echo "<span class='hover'>".$row['prompt']."</span>";
+                    $str = $row['prompt'];
                 } else {
-                    echo "<span class='hover'>".$row['story']."</span>";
+                    $str = $row['story'];
                 }
+            
+                if (strlen($str) > 100) {
+                    $str = substr($str, 0, 100) . "...";
+                }
+                echo "<span class='hover'>".$str."</span>";
+            
+            
             echo " <form method=\"post\" action=\"submitupdo.php\"></form> <button type=\"submit\"><img src=\"./upArrow.bmp\"  width=\"20\" height=\"30\"></button></form>
 			</div><div class =\"rightF\">
 			<form method=\"post\" action=\"submitdowndo.php\"></form> <button type=\"submit\"><img src=\"./downArrow.bmp\"  width=\"20\" height=\"30\"></button></form></div></td>";
