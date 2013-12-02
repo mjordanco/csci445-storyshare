@@ -280,7 +280,7 @@ function displayStory($storyID) {
     
         echo "<h2 style='color: #CC0000;'>".$storyRow['name']."</h2>";
         echo "<br>";
-        echo "<p style='font-size: medium;'><pre>".stripslashes($storyRow['story'])."</pre></p>";
+        echo "<pre><span class='forPre' style='font-size: medium; font-family: 'Times New Roman', Times, serif'>".stripslashes($storyRow['story'])."</span></pre>";
 }
 
 function getUserName($userId){

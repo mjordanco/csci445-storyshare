@@ -12,6 +12,11 @@
             margin: 50px 30px 10px 30px;
             padding: 25px 25px 25px 25px;
         }
+        .forPre {
+            font-size: medium;
+            font-family: Times, serif;
+        }
+            
 	</style>
 </head>
 <body>
