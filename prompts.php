@@ -4,49 +4,7 @@
 		include_once('phplibs.php');
 	?>
 <link rel="stylesheet" type="text/css" href="view_stories_prompts.css">
-<<<<<<< HEAD
 	<style type="text/css">
-		table {
-			padding: 10px;
-		}
-		li.left {
-			background-color:#CCA300;
-			float: left;
-			width: 30%;
-		}
-		li.poin{
-			background-color:#CCA300;
-			float: left;
-			width: 30%;
-		}
-		ul.dispP {
-			list-style-type: none;
-			height:20%;
-			display: block;
-		}
-		ul.pBox {
-			list-style-type: none;
-			padding:2%;
-			display: inline;
-			width: 100%;
-			height: 80%;
-		}
-		li.right{
-			background-color:#CCA300;
-			float: right;
-			width: 70%;	
-		}
-		li.pright{
-			background-color:#CCA300;
-			float: right;
-			width: 70%;	
-		}
-		td {
-			background-color:#7A0000;
-			width: 20%;
-			height: 20%;
-		}
-		
 		.leftF {
 			float:left;
 		}
@@ -85,7 +43,6 @@
             }
             display_table("prompts", "prompt", $sortGenre);
         ?>
->>>>>>> b5327607e6ce483f98213681ebf99689c81242d5
 	
 	</table>
 	</div>
