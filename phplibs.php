@@ -23,7 +23,7 @@ function print_header($selected_page) {
 			echo ' class="selected"';
 		}
 		echo '>
-			<a href="./prompts.php">All Prompts</a>
+			<a href="./prompts.php?View All">All Prompts</a>
 		</li>';
 
 		echo '<li';
@@ -182,11 +182,11 @@ function get_prompts( $category) {
 	
 }
 
-function submit_prompt($name, $category, $prompt, $points, $user_id) {
+function submit_prompt($name, $genre, $prompt, $points, $user_id) {
 	$db = open_db();
 
 	$curdate = date('Y-m-d h:i:s');
-	$add_query = 'INSERT INTO prompts(name, category, prompt, points, submit_date, user_id) VALUES("'.$name.'", "'. $category.'", "'.$prompt.'", "'.$points.'", "'.$curdate.'", "'.$user_id.'")';
+	$add_query = 'INSERT INTO prompts(name, genre, prompt, points, submit_date, user_id) VALUES("'.$name.'", "'. $genre.'", "'.$prompt.'", "'.$points.'", "'.$curdate.'", "'.$user_id.'")';
 	echo $add_query;
 	$db->query($add_query);
 
@@ -216,6 +216,71 @@ function submit_story($name, $genre, $rating, $story, $prompt_id, $user_id, $poi
 	echo $story_id;
 
 	return $story_id;
+}
+
+function display_table($name, $text, $genre) {
+    $db = open_db(); 
+    $query = "SELECT * FROM $name";
+    $result = $db->query($query);
+    $num_results = $result->num_rows;
+
+    echo "<p>".$genre."</p>";
+    echo "<table id='names'>";
+    $column = 0;
+    $entries = 0;
+    for ($i=0; $i < $num_results; $i++) {
+        if ($column == 0) {
+            echo "<tr>";
+        }
+        if ($column == 4) {
+            echo "</tr>";
+            $column = 0;
+        }
+        
+        $row = $result->fetch_assoc();
+        if ($genre == "View All") {
+            echo "<td id='specialCell' class='hoverClass'>";
+                echo "<span class='noHover'>".$row['name']."</span>";
+                if ($text == "prompt") {
+                    echo "<span class='hover'>".$row['prompt']."</span>";
+                } else {
+                    echo "<span class='hover'>".$row['story']."</span>";
+                }
+            echo "</td>";
+            $column++;
+            $entries++;
+        } else {
+            if ($genre == $row['genre']) {
+                echo "<td id='specialCell' class='hoverClass'>";
+                    echo "<span class='noHover'>".$row['name']."</span>";
+                    if ($text == "prompt") {
+                        echo "<span class='hover'>".$row['prompt']."</span>";
+                    } else {
+                        echo "<span class='hover'>".$row['story']."</span>";
+                    }
+                echo "</td>";
+                $column++;
+                $entries++;
+            }
+        }
+    }
+    
+    while ($entries < 20) {
+        if ($column == 0) {
+            echo "<tr>";
+        }
+        if ($column == 4) {
+            echo "</tr>";
+            $column = 0;
+        }
+                
+        echo "<td></td>";
+        $column++;
+        $entries++;
+    }
+
+    echo "</table>";
+    echo "<br>";
 }
 
 session_start();

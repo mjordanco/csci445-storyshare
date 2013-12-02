@@ -23,7 +23,6 @@
 
 		if ($user_id != NULL) {
 			$_SESSION['user_id'] = $user_id;
-
 			header('Location: ./');
 		}
 

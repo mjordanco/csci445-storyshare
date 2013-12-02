@@ -4,6 +4,7 @@
 		include_once('phplibs.php');
 	?>
 <link rel="stylesheet" type="text/css" href="view_stories_prompts.css">
+<<<<<<< HEAD
 	<style type="text/css">
 		table {
 			padding: 10px;
@@ -53,35 +54,38 @@
 			float:right;
 		}
 </style>
+
 </head>
 <body>
 	<?php
 		print_header("prompts");
 	?>
 	
-		<div class="profile_img">
+    <div class="profile_img">
 		<img src="user_profile_pic_placeholder.png" alt="User profile picture">
 	</div>
-	
-	<div class="sidebar" id="first"><a href="promptsChange.php">ACTION</a></div>
-	<div class="sidebar" id="second"><a href="promptsChangeAd.php">ADVENTURE</a></div>
-	<div class="sidebar" id="third"><a href="promptsChangeCom.php">COMEDY</a></div>
-	<div class="sidebar" id="fourth"><a href="promptsChangeDra.php">DRAMA</a></div>
-	<div class="sidebar" id="fifth"><a href="promptsChangeHis.php">HISTORY</a></div>
-	<div class="sidebar" id="sixth"><a href="promptsChangeHorror">HORROR</a></div>
-	<div class="sidebar" id="seventh"><a href="promptsChangeRom">ROMANCE</a></div>
-	<div class="sidebar" id="eigth"><a href="addLink">SCI-FI</a></div>
+
+    <div class="sidebar" id="first"><a href="prompts.php?sortGenre=View All">VIEW ALL</a></div>
+	<div class="sidebar" id="second"><a href="prompts.php?sortGenre=Action">ACTION</a></div>
+	<div class="sidebar" id="third"><a href="prompts.php?sortGenre=Adventure">ADVENTURE</a></div>
+	<div class="sidebar" id="fourth"><a href="prompts.php?sortGenre=Comedy">COMEDY</a></div>
+	<div class="sidebar" id="fifth"><a href="prompts.php?sortGenre=Drama">DRAMA</a></div>
+    <div class="sidebar" id="sixth"><a href="prompts.php?sortGenre=Fantasy">FANTASY</a></div>
+	<div class="sidebar" id="seventh"><a href="prompts.php?sortGenre=History">HISTORY</a></div>
+	<div class="sidebar" id="eigth"><a href="prompts.php?sortGenre=Horror">HORROR</a></div>
+	<div class="sidebar" id="ninth"><a href="prompts.php?sortGenre=Romance">ROMANCE</a></div>
+	<div class="sidebar" id="tenth"><a href="prompts.php?sortGenre=Sci-Fi">SCI-FI</a></div>
+    <div class="sidebar" id="eleventh"><a href="prompts.php?sortGenre=Other">OTHER</a></div>
 	
 	<div id="center">
-		<h2 id="genreHeader">Current Genre: <?php  $link = $_SESSION['link']; echo $link; if($link ==""){$link = "action";}?> </h2>
-		<table name= "pTable" border="1">
-		<?php
-			$link = $_SESSION['link'];
-			if($link ==""){
-			  $link = "action";
-			  }
-			get_prompts( $link);
-		?>
+        <?php
+            $sortGenre = htmlspecialchars($_GET['sortGenre']);
+            if ($sortGenre == null) {
+                $sortGenre="View All";
+            }
+            display_table("prompts", "prompt", $sortGenre);
+        ?>
+>>>>>>> b5327607e6ce483f98213681ebf99689c81242d5
 	
 	</table>
 	</div>

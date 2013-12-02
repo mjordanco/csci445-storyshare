@@ -1,6 +1,6 @@
 	#center {
 		margin-left: 200px;
-		height: 700px;
+		height: 1300px;
 		background: white;
 		border: 1px solid black;
 		border-radius: 5px;
@@ -27,6 +27,7 @@
 		text-align: center;
 		font-family: "Times New Roman", Times, serif;
 		font-size: 12pt;
+        color: white;
 	
 		border-radius:15px 15px 15px 15px;
 		border:2px solid black;
@@ -64,9 +65,18 @@
 	#eigth {
 		margin: 315px 0 315px 0;
 	}
+    #ninth {
+		margin: 360px 0 360px 0;
+	}
+	#tenth {
+		margin: 405px 0 405px 0;
+	}
+    #eleventh {
+		margin: 450px 0 450px 0;
+	}
 	a:link, a:visited {
 		text-decoration: none;
-		color: black;
+		color: white;
 	}
 	a:hover, a:active {
 		text-decoration: none;
@@ -88,4 +98,74 @@
 		float: right;
 		display: block;
 	}
+
+    table {
+        border-spacing: 0;
+        table-layout: fixed;
+        vertical-align: middle;
+        font-size: large;
+        font-family: "Times New Roman", Georgia, Palatino, serif;
+        width: 80%;
+        margin: auto;            
+        margin-top: 15px;
+    }
+        
+    /*Sets the style for the entire table*/
+     #names {
+          border: 5px solid #666633;
+          border-collapse: collapse;
+          text-align: center;
+      }
+        
+     /*Sets the style for the column labels*/
+    #names th {
+        background-color: #666633;
+        color: white;
+    }
+        
+    /*Sets border on all sides on our table data*/
+    #names td {
+        border: 2px solid #666633;
+    } 
+        
+    /*Changes background for every odd numbered row*/
+    #names tr:nth-of-type(odd) {
+        background: #A3C266;
+    }
+        
+    /*Styles the captions above*/
+    caption {
+        font-family: Verdana, Arial, Tahoma, sans-serif;
+        font-weight: bold;
+        padding-bottom: 5px;
+    }
+        
+    /*Styles the tables header*/
+    th {
+        font-family: Verdana, Arial, Tahoma, sans-serif;
+        font-size: medium;
+    }
+        
+    /*Ensures padding around data*/
+    td {
+        padding: 100px 5px 100px 5px;
+        text-align: center;
+    }
+
+    #specialCell .hover{
+        display:none;
+    }
+
+    #specialCell .noHover{
+        display:block;
+    }
+
+    #specialCell:hover .hover{
+        display:block;
+    }
+
+    #specialCell:hover .noHover{
+        display:none;
+    }
+		
 	
