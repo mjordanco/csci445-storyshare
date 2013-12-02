@@ -178,8 +178,6 @@ function get_prompts( $category) {
 	
 	
 	return 0;
-	
-	
 }
 
 function submit_prompt($name, $genre, $prompt, $points, $user_id) {
@@ -202,18 +200,11 @@ function submit_story($name, $genre, $rating, $story, $prompt_id, $user_id, $poi
 	$date = date('Y-m-d h:i:s');
     
 	$add_query = 'INSERT INTO stories(name, genre, rating, story, prompt_id, user_id, points, submit_date) VALUES("'.$name.'", "'.$genre.'", "'.$rating.'", "'.$story.'", "'.$prompt_id.'", "'.$user_id.'", 0, "'.$date.'")';
-	echo $add_query;
-    $db->query($add_query);
-	/*$result = $db->query($add_query);
-    
-    if ($result) {
-        echo $db->affected_rows." was successfully submitted.";
-    } else {
-        echo "An error has occured. The item was not submitted.";
-    }*/
+    if ($db->query($add_query)) {
+        echo "<p style='color: white; font-size: large;'>Your story was successfully submitted!</p>";
+    }
     
 	$story_id = $db->insert_id;
-	echo $story_id;
 
 	return $story_id;
 }
@@ -293,7 +284,13 @@ function displayFeatured($table_name, $typeTitle, $body) {
         $featured = $row;
 
         echo "<h1>Featured $typeTitle: ".$featured['name']."</h1>";
-        echo "<p>".$featured[$body]."</p>";
+        
+        $str = $featured[$body];
+        if (strlen($str) > 1000) {
+                $str = substr($str, 0, 1000) . "...";
+        }
+        echo "<p style='font-size: medium;'>".$str."</p>";
+    
 	    echo "<div class='featured_bottom'>";
             echo "<h3>Submitted by ".$featured['user_id']."</h3>";
 		echo "<a href='./'><button type='button'>Continue Reading...</button></a>";
