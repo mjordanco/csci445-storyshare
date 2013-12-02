@@ -23,7 +23,7 @@ function print_header($selected_page) {
 			echo ' class="selected"';
 		}
 		echo '>
-			<a href="./prompts.php?View All">All Prompts</a>
+			<a href="./prompts.php?sortGenre=View All">All Prompts</a>
 		</li>';
 
 		echo '<li';
@@ -31,7 +31,7 @@ function print_header($selected_page) {
 			echo ' class="selected"';
 		}
 		echo '>
-			<a href="./stories.php">All Stories</a>
+			<a href="./stories.php?sortGenre=View All">All Stories</a>
 		</li>';
 
 		echo '<li';
@@ -218,7 +218,7 @@ function display_table($name, $text, $genre) {
     $result = $db->query($query);
     $num_results = $result->num_rows;
 
-    echo "<p>".$genre."</p>";
+    echo "<h1 style='padding: 0px 0px 0px 15px; color: #CC0000;'>Current ".ucfirst($text)." Genre: ".$genre."</h1>";
     echo "<table id='names'>";
     $column = 0;
     $entries = 0;
@@ -232,7 +232,7 @@ function display_table($name, $text, $genre) {
         }
         
         $row = $result->fetch_assoc();
-        if ($genre == "View All") {
+        if (($genre == "View All") || ($genre == $row['genre'])) {
             echo "<td id='specialCell' class='hoverClass'>";
                 echo "<span class='noHover'>".$row['name']."</span>";
                 if ($text == "prompt") {
@@ -243,20 +243,7 @@ function display_table($name, $text, $genre) {
             echo "</td>";
             $column++;
             $entries++;
-        } else {
-            if ($genre == $row['genre']) {
-                echo "<td id='specialCell' class='hoverClass'>";
-                    echo "<span class='noHover'>".$row['name']."</span>";
-                    if ($text == "prompt") {
-                        echo "<span class='hover'>".$row['prompt']."</span>";
-                    } else {
-                        echo "<span class='hover'>".$row['story']."</span>";
-                    }
-                echo "</td>";
-                $column++;
-                $entries++;
-            }
-        }
+        } 
     }
     
     while ($entries < 20) {

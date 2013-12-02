@@ -33,9 +33,6 @@
 	<div id="center">
         <?php
             $sortGenre = htmlspecialchars($_GET['sortGenre']);
-            if ($sortGenre == null) {
-                $sortGenre="View All";
-            }
             display_table("prompts", "prompt", $sortGenre);
         ?>
 	
