@@ -13,6 +13,8 @@
 			float: left;
 			text-align: left;
 			font-size: 25px;
+			background-color: #8A0000;
+			color: white;
 		}
 		#storybox {
 			margin-top: 10px;
@@ -20,13 +22,18 @@
 		}
 		#sName {
 			margin-top: 10px;
+			background-color: #8A0000;
 			float: left;
 			text-align: left;
 			font-size: 25px;
+			color: white;
 		}
+		
 		td.specialCell {
 			background-color: #CC9922;
 			 border: 1px solid #666633;
+			 width: 25%;
+			 min-width: 240px;
 		}
 	</style>
 </head>
@@ -42,8 +49,10 @@ Prompts:
 </div>
 <section id="promptbox">
 	<?php 
-		$startweek = "2013-11-18";
-		$stopweek = "2013-12-01";
+		$day = date('w');
+		$startweek = date('Y-m-d', strtotime('-'.$day.' days'));
+		$stopweek = date('Y-m-d', strtotime('+'.(6-$day).' days'));
+		echo "week start: ".$startweek."    end week: ". $stopweek;
 		display_prompts_trophies($startweek, $stopweek);
 	?>
 </section>	
@@ -53,8 +62,9 @@ Stories:
 </div>
 <section id="storybox">
 	<?php 
-		$startweek = "2013-11-17";
-		$stopweek = "2013-12-01";
+		$day = date('w');
+		$startweek = date('Y-m-d', strtotime('-'.$day.' days'));
+		$stopweek = date('Y-m-d', strtotime('+'.(6-$day).' days'));
 		display_stories_trophies($startweek, $stopweek);
 	?>
 </section>	
