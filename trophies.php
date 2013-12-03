@@ -26,7 +26,6 @@ $n = count($weekfrom);
 		#promptbox {
 			margin-top: 10px;
 			margin-left: 25%;
-            padding: 30px 20px 20px 20px;
 		}
 		#pName {
 			margin-top: 10px;
@@ -41,7 +40,6 @@ $n = count($weekfrom);
 		#storybox {
 			margin-top: 10px;
 			margin-left: 25%;
-            padding: 30px 20px 20px 20px;
 		}
 		#sName {
 			margin-top: 10px;
@@ -53,43 +51,14 @@ $n = count($weekfrom);
 			font-size: 25px;
 			color: white;
 		}
+		
 		td.specialCell {
-            vertical-align: middle;
-            margin-top: 20px;
-            border: 1px solid white;
-            width: 25%;
-            min-width: 240px;
-            padding: 10px 10px 10px 10px;
+			background-color: #CC9922;
+			 border: 1px solid #666633;
+			 width: 25%;
+			 min-width: 240px;
 		}
-        .gold {
-            background-color: #f2da7b;
-            vertical-align: middle;
-            margin-top: 20px;
-            border: 1px solid white;
-            width: 25%;
-            min-width: 240px;
-            padding: 10px 10px 10px 10px;
-        }
-        .silver {
-            background-color: #E3E3E3;
-            vertical-align: middle;
-            margin-top: 20px;
-            border: 1px solid white;
-            width: 25%;
-            min-width: 240px;
-            padding: 10px 10px 10px 10px;
-        }
-        .bronze {
-            background-color: #E0A366;
-            vertical-align: middle;
-            margin-top: 20px;
-            border: 1px solid white;
-            width: 25%;
-            min-width: 240px;
-            padding: 10px 10px 10px 10px;
-        }
 	</style>
-<link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
 </head>
 <body>
 	<?php
@@ -103,7 +72,8 @@ Prompts:
 </div>
 <section id="promptbox">
 	<?php 
-		#echo "week start: ".$startweek."    end week: ". $stopweek;
+		
+		echo "week start: ".$startweek."    end week: ". $stopweek;
 		display_prompts_trophies($startweek, $stopweek);
 	?>
 </section>	
@@ -113,6 +83,7 @@ Stories:
 </div>
 <section id="storybox">
 	<?php 
+		
 		display_stories_trophies($startweek, $stopweek);
 	?>
 </section>	
