@@ -465,7 +465,7 @@ function display_user_prompts_drop($userID){
     echo "<select name='prompts' size='5' id='prompts' onchange='this.form.submit()'>";
     for ($i=0; $i < $num_results; $i++) {
         $row = $result->fetch_assoc();
-        echo "<option value=".$row['name'].">".$row['name']."</option>";
+        echo "<option value='".$row['name']."'>".$row['name']."</option>";
     }
     echo "</select>";
     echo "<br>";
@@ -480,7 +480,7 @@ function display_user_stories_drop($userID){
     echo "<select name='stories' size='5' id='stoires' onchange='this.form.submit()'>";
     for ($i=0; $i < $num_results; $i++) {
         $row = $result->fetch_assoc();
-        echo "<option value=".$row['name'].">".$row['name']."</option>";
+        echo "<option value='".$row['name']."'>".$row['name']."</option>";
     }
     echo "</select>";
     echo "<br>";
@@ -488,16 +488,17 @@ function display_user_stories_drop($userID){
 
 function display_prompts_user($userid, $name) {
     $db = open_db(); 
-    $query = "SELECT * FROM prompts WHERE user_id=\"$userid\" AND name = \"$name\"";
+    $query = "SELECT * FROM prompts WHERE user_id=\"$userid\" AND name =\"$name\"";
     $result = $db->query($query);
     #echo "<h1 style='padding: 0px 0px 0px 15px; color: #CC0000;'>Current ".ucfirst($text)." Genre: ".$genre."</h1>";
     echo "<table id='names'>";
 		echo "<tr>";
         $row = $result->fetch_assoc();
             echo "<td class='specialCell'>";
-				echo "<h3> $name </h3>";
+				echo "<h3>".$name."</h3>";
 				echo "Points: ".$row['points']."<br>";
 				echo "Genre: ".$row['genre']."<br>";
+                echo "<br>";
                 echo "Prompt: ".$row['prompt']."<br>";
             echo " </td>";
 	echo "</tr>";
@@ -514,11 +515,17 @@ function display_stories_user($userid , $name) {
     echo "<table id='names'>";
 		echo "<tr>";
         $row = $result->fetch_assoc();
+    
+        $story = $row['story'];
+        if (strlen($story) > 100) {
+            $story = substr($story, 0, 400) . "...";
+        }
             echo "<td class='specialCell'>";
 				echo "<h3> ".$name."</h3>";
 				echo "Points: ".$row['points']."<br>";
                 echo "Genre: ".$row['genre']."<br>";
-                echo "story: ".$row['story']."<br>";  
+                echo "<br>";
+                echo "Story: ".$story."<br>";  
             echo " </td>";
 	echo "</tr>";
     echo "</table>";
