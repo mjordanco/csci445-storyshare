@@ -69,6 +69,7 @@
         }
     }
     </script>
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
 </head>
 <body>
 	<?php
@@ -142,7 +143,7 @@
                     $result = $db->query($query);
                     $row = $result->fetch_assoc();
 
-                    echo '<p>' . $row['prompt'] . '</p>';
+                    echo "<p><strong>Selected Prompt: ".$row['prompt']."</strong></p>";
                 }
                 ?>
             
