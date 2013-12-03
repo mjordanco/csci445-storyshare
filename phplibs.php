@@ -1,6 +1,7 @@
 <?php
 
 function print_header($selected_page) {
+    echo "<link rel='shortcut icon' href='/favicon.ico'>";
 	echo '
 	<link rel="stylesheet" href="theme.css" />
 	<header>
@@ -280,7 +281,7 @@ function displayStory($storyID) {
     
         echo "<h2 style='color: #CC0000;'>".$storyRow['name']."</h2>";
         echo "<br>";
-        echo "<pre><span class='forPre' style='font-size: medium; font-family: 'Times New Roman', Times, serif'>".stripslashes($storyRow['story'])."</span></pre>";
+        echo "<pre><span class='forPre' style='font-size: medium; font-family: 'Times New Roman', Times, serif'>".wordwrap(stripslashes($storyRow['story']), 115, "\n", false)."</span></pre>";
 }
 
 function getUserName($userId){
