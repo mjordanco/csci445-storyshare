@@ -234,8 +234,6 @@ function display_table($name, $text, $genre) {
     $result = $db->query($query);
     $num_results = $result->num_rows;
 
-    echo $num_results;
-
     echo "<h1 style='padding: 0px 0px 0px 15px; color: #CC0000;'>Current ".ucfirst($text)." Genre: ".$genre."</h1>";
     echo "<table id='names'>";
     $column = 0;
@@ -394,7 +392,7 @@ function display_stories_trophies($startweek, $stopweek) {
 				echo "<h3> $tNames[$i] </h3>";
                 echo "UserName: ".getUserName($row['user_id'])."<br>";
 				echo "Points: ".$row['points']."<br>";
-				#echo "Category: ".$row['category']."<br>";
+				echo "Genre: ".$row['genre']."<br>";
                 echo "<span class='hover'>".$row['story']."</span>";
                
             echo " </td>";

@@ -68,8 +68,6 @@
 	<br>
 <section id="signinbox">
 		<?php
-			
-
 			$db = open_db();
 
 			$query = 'SELECT * FROM users WHERE id = ' . $user_id;
@@ -85,22 +83,22 @@
 </section>
 <section id="box">
 <div id="submittedText">
-			<?php
+        <?php
 			echo "<form action='profile.php?user_id=$user_id' method='POST'>";
 			display_user_prompts_drop($user_id);
 			echo "</form>";
 			
-			?>
+        ?>
 				
 </div>
 
 <div id="displayP">
 	<?php
-	if(isset($_POST["prompts"]) && !empty($_POST["prompts"])){
+	   if(isset($_POST["prompts"]) && !empty($_POST["prompts"])){
 				$name = $_POST['prompts'];
 				display_prompts_user($user_id , $name);
 				
-			}
+       }
 	?>
 </div>
 </section>
