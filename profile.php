@@ -11,33 +11,40 @@
 	<style type="text/css">
 		#signinbox {
 			float: left;
-			width: 10%;
+			width: 200px;
 			margin-left: 10px;
+            position: absolute;
+            color: white;
+            font-size: large;
 		}
 		#box {
-		overflow: hidden;
-			margin-left: 20%;
+            float: center;
+		    overflow: hidden;
+			margin-left: 30%;
 		}
 		#box2 {
-		overflow: hidden;
-			margin-left: 20%;
+            float: center;
+		    overflow: hidden;
+			margin-left: 30%;
 		}
 		#submittedText {
-			float:left;
-			width: 30%;
+			float: left;
+			width: 300px;
 			padding: 15px;
 			height: 150px;
+            font-size: medium;
 		}
 		#submittedText2 {
 			float: left;
-			width: 30%;
+			width: 300px;
 			padding: 15px;
 			height: 150px;
+            font-size: medium;
 		}
 		select{
-				padding: 15px;
-				height: 135px !important;
-				width: 95% !important;
+            padding: 15px;
+            height: 135px !important;
+            width: 95% !important;
 		}
 		#displayP {
 			float: right;
