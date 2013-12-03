@@ -113,7 +113,6 @@ Stories:
 </div>
 <section id="storybox">
 	<?php 
-		
 		display_stories_trophies($startweek, $stopweek);
 	?>
 </section>	
