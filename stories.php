@@ -6,16 +6,13 @@
 	
 <link rel="stylesheet" type="text/css" href="view_stories_prompts.css">
 <style type="text/css">
-	.leftF {
-			float:left;
-		}
-		.rightF {
-			float:right;
-		}
+   .arrows {
+        vertical-align: middle;
+        margin-top: 10px;
+    }
 </style>
 <script type="text/javascript">
 function readStory(storyID) {
-    //document.location.href = "http://www.google.com";
     document.location.href = "fullStory.php?storyNum=" + storyID.toString();
 }
 </script>

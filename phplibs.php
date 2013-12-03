@@ -246,10 +246,12 @@ function display_table($name, $text, $genre) {
                 }
                 echo "<span class='hover' OnClick='readStory(".$storyID.")'>".$str."</span>";
             
+            echo "<div class='arrows'>";
+            echo "<form method='post' action='submitupdo.php'><button type='submit'><img src='upArrow.png' width='20' height='20'></button></form>";
+            echo "<form method='post' action='submitdowndo.php'><button type='submit'><img src='downArrow.png' width='20' height='20'></button></form>";
+            echo "</div>";
+            echo "</td>";
             
-            echo " <form method=\"post\" action=\"submitupdo.php\"></form> <button type=\"submit\"><img src=\"./upArrow.bmp\"  width=\"20\" height=\"30\"></button></form>
-			</div><div class =\"rightF\">
-			<form method=\"post\" action=\"submitdowndo.php\"></form> <button type=\"submit\"><img src=\"./downArrow.bmp\"  width=\"20\" height=\"30\"></button></form></div></td>";
             $column++;
             $entries++;
         } 
@@ -492,11 +494,13 @@ function displayFeatured($table_name, $typeTitle, $body) {
         if (strlen($str) > 1000) {
                 $str = substr($str, 0, 1000) . "...";
         }
-        echo "<p style='font-size: medium;'>".$str."</p>";
+        echo "<p style='font-size: large;'>".$str."</p>";
     
 	    echo "<div class='featured_bottom'>";
-            echo "<h3>Submitted by ".$featured['user_id']."</h3>";
-		echo "<a href='./'><button type='button'>Continue Reading...</button></a>";
+            echo "<h3>Submitted by ".getUserName($featured['user_id'])."</h3>";
+            if ($table_name == "stories") {
+		      echo "<button type='button' OnClick='readStory(".$featured['id'].")'>Continue Reading...</button>";
+            }
 	    echo "</div>";
 }
 
