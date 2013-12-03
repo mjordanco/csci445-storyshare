@@ -2,6 +2,26 @@
 <head>
 	<?php
 		include_once('phplibs.php');
+		$day = date('w');
+		$startweek = date('Y-m-d', strtotime('-'.$day.' days'));
+		$stopweek = date('Y-m-d', strtotime('+'.(6-$day).' days'));
+
+		$weekfrom = array();
+		$weekto = array();
+	$dateSa = $startweek;
+	$dateSo = $stopweek;
+for($i =0; $i < 3; $i = $i+1)
+{
+    $dateSa = date('Y-m-d', strtotime($dateSa. ' - 7 days'));
+	$dateSo = date('Y-m-d', strtotime($dateSo. ' - 7 days'));
+    array_push($weekfrom,$dateSa);
+    array_push($weekto,$dateSo);
+   
+}
+$n = count($weekfrom);
+echo "COunt: ".$n;
+echo ": day is".$weekfrom[0];
+
 	?>
 	<style type="text/css">
 		#promptbox {
@@ -14,6 +34,8 @@
 			text-align: left;
 			font-size: 25px;
 			background-color: #8A0000;
+			padding: 15px;
+			border-radius: 20px;
 			color: white;
 		}
 		#storybox {
@@ -23,7 +45,9 @@
 		#sName {
 			margin-top: 10px;
 			background-color: #8A0000;
+			padding: 15px;
 			float: left;
+			border-radius: 20px;
 			text-align: left;
 			font-size: 25px;
 			color: white;
@@ -49,9 +73,7 @@ Prompts:
 </div>
 <section id="promptbox">
 	<?php 
-		$day = date('w');
-		$startweek = date('Y-m-d', strtotime('-'.$day.' days'));
-		$stopweek = date('Y-m-d', strtotime('+'.(6-$day).' days'));
+		
 		echo "week start: ".$startweek."    end week: ". $stopweek;
 		display_prompts_trophies($startweek, $stopweek);
 	?>
@@ -62,15 +84,25 @@ Stories:
 </div>
 <section id="storybox">
 	<?php 
-		$day = date('w');
-		$startweek = date('Y-m-d', strtotime('-'.$day.' days'));
-		$stopweek = date('Y-m-d', strtotime('+'.(6-$day).' days'));
+		
 		display_stories_trophies($startweek, $stopweek);
 	?>
 </section>	
 
 <div id="sName">
 Past Prompts:
+<br>
+<?php
+               
+                echo "<select name='prompt_id' size='4' id='php_select' required>";
+               for($i =0; $i < 3;  $i = $i+1) {
+                    $row = "week: ".$weekfrom[$i]." - ".$weekto[$i];
+                     echo "<option value=".$row.">".$row."</option>";
+                }
+                echo "</select>";
+                echo "<br>";
+         
+            ?>
 </div>
 <section id="storybox">
 	<?php 

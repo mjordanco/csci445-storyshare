@@ -298,10 +298,9 @@ function getUserName($userId){
 
 function display_prompts_trophies($startweek, $stopweek) {
     $db = open_db(); 
-    $query = "SELECT * FROM prompts Where submit_date < \"$stopweek\" AND submit_date > \"$startweek\" ORDER BY points DESC";
+    $query = "SELECT * FROM prompts Where submit_date < \"$stopweek\" AND submit_date > \"$startweek\" ORDER BY points DESC LIMIT 4";
     $result = $db->query($query);
     $num_results = $result->num_rows;
-	echo "num rows: ".$num_results;
 	$tNames = array("Gold", "Silver", "Bronze");
     #echo "<h1 style='padding: 0px 0px 0px 15px; color: #CC0000;'>Current ".ucfirst($text)." Genre: ".$genre."</h1>";
     echo "<table id='names'>";
@@ -336,7 +335,7 @@ function display_prompts_trophies($startweek, $stopweek) {
 
 function display_stories_trophies($startweek, $stopweek) {
     $db = open_db(); 
-    $query = "SELECT * FROM stories Where submit_date < \"$stopweek\" AND submit_date > \"$startweek\" ORDER BY points DESC LIMIT 5";
+    $query = "SELECT * FROM stories Where submit_date < \"$stopweek\" AND submit_date > \"$startweek\" ORDER BY points DESC LIMIT 4";
     $result = $db->query($query);
     $num_results = $result->num_rows;
 	$tNames = array("Gold", "Silver", "Bronze");
