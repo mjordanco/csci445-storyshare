@@ -499,8 +499,9 @@ function display_prompts_user($userid, $name) {
 				echo "Points: ".$row['points']."<br>";
 				echo "Genre: ".$row['genre']."<br>";
                 echo "<br>";
-                echo "Prompt: ".$row['prompt']."<br>";
-            echo " </td>";
+                echo $row['prompt'];
+                echo "<br>";
+                echo "</td>";
 	echo "</tr>";
     echo "</table>";
     echo "<br>";
@@ -525,7 +526,8 @@ function display_stories_user($userid , $name) {
 				echo "Points: ".$row['points']."<br>";
                 echo "Genre: ".$row['genre']."<br>";
                 echo "<br>";
-                echo "Story: ".$story."<br>";  
+                echo $story;
+                echo "<br>";  
             echo " </td>";
 	echo "</tr>";
     echo "</table>";
