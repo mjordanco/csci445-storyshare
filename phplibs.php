@@ -432,7 +432,7 @@ function display_stories_trophies($startweek, $stopweek) {
 function user_stats($userId){
 	$userName = "";
 	 $db = open_db(); 
-    $query = "SELECT user_id, id, points FROM stories Where user_id= \"$userId\" ";
+    $query = "SELECT user_id, id, points FROM stories WHERE user_id= \"$userId\" ";
     $result = $db->query($query);
     $num_results = $result->num_rows;
 	$pointsS =0;
@@ -441,7 +441,7 @@ function user_stats($userId){
 		$pointsS = $pointsS + $row['points'];
 	}
 	echo "<h4>Total Stories: $num_results <h4>";
-	$query = "SELECT user_id, id, points FROM prompts Where user_id= \"$userId\" ";
+	$query = "SELECT user_id, id, points FROM prompts WHERE user_id= \"$userId\" ";
     $result = $db->query($query);
     $num_results = $result->num_rows;
 	$pointsP =0;
@@ -457,56 +457,49 @@ function user_stats($userId){
 }
 
 function display_user_prompts_drop($userID){
-
-                $db = open_db(); 
-                $query = "SELECT user_id, name FROM prompts where user_id=\"$userID\"";
-                $result = $db->query($query);
-                $num_results = $result->num_rows;
+    $db = open_db(); 
+    $query = "SELECT user_id, name FROM prompts WHERE user_id=\"$userID\"";
+    $result = $db->query($query);
+    $num_results = $result->num_rows;
 				
-                echo "<select name='prompts' size='5' id='prompts' onchange='this.form.submit()'>";
-                for ($i=0; $i < $num_results; $i++) {
-                    $row = $result->fetch_assoc();
-                     echo "<option value=".$row['name'].">".$row['name']."</option>";
-                }
-                echo "</select>";
-                echo "<br>";
+    echo "<select name='prompts' size='5' id='prompts' onchange='this.form.submit()'>";
+    for ($i=0; $i < $num_results; $i++) {
+        $row = $result->fetch_assoc();
+        echo "<option value=".$row['name'].">".$row['name']."</option>";
+    }
+    echo "</select>";
+    echo "<br>";
 }
 
 function display_user_stories_drop($userID){
-
-                $db = open_db(); 
-                $query = "SELECT user_id, name FROM stories where user_id=\"$userID\"";
-                $result = $db->query($query);
-                $num_results = $result->num_rows;
-				
-                echo "<select name='stories' size='5' id='stoires' onchange='this.form.submit()'>";
-                for ($i=0; $i < $num_results; $i++) {
-                    $row = $result->fetch_assoc();
-                     echo "<option value=".$row['name'].">".$row['name']."</option>";
-                }
-                echo "</select>";
-                echo "<br>";
-}
-
-function display_prompts_user($userid , $name) {
     $db = open_db(); 
-    $query = "SELECT * FROM prompts Where user_id=\"$userid\" AND name = \"$name\"";
+    $query = "SELECT user_id, name FROM stories WHERE user_id=\"$userID\"";
     $result = $db->query($query);
     $num_results = $result->num_rows;
+				
+    echo "<select name='stories' size='5' id='stoires' onchange='this.form.submit()'>";
+    for ($i=0; $i < $num_results; $i++) {
+        $row = $result->fetch_assoc();
+        echo "<option value=".$row['name'].">".$row['name']."</option>";
+    }
+    echo "</select>";
+    echo "<br>";
+}
+
+function display_prompts_user($userid, $name) {
+    $db = open_db(); 
+    $query = "SELECT * FROM prompts WHERE user_id=\"$userid\" AND name = \"$name\"";
+    $result = $db->query($query);
     #echo "<h1 style='padding: 0px 0px 0px 15px; color: #CC0000;'>Current ".ucfirst($text)." Genre: ".$genre."</h1>";
     echo "<table id='names'>";
-    $column = 0;
-    $entries = 0; 
 		echo "<tr>";
         $row = $result->fetch_assoc();
             echo "<td class='specialCell'>";
 				echo "<h3> $name </h3>";
 				echo "Points: ".$row['points']."<br>";
-				echo "Category: ".$row['category']."<br>";
+				echo "Genre: ".$row['genre']."<br>";
                 echo "Prompt: ".$row['prompt']."<br>";
-               
             echo " </td>";
-            $column++;
 	echo "</tr>";
     echo "</table>";
     echo "<br>";
@@ -514,22 +507,19 @@ function display_prompts_user($userid , $name) {
 
 function display_stories_user($userid , $name) {
     $db = open_db(); 
-    $query = "SELECT * FROM stories Where user_id=\"$userid\" AND name = \"$name\"";
+    $query = "SELECT * FROM stories WHERE user_id=\"$userid\" AND name = \"$name\"";
     $result = $db->query($query);
-    $num_results = $result->num_rows;
+    
     #echo "<h1 style='padding: 0px 0px 0px 15px; color: #CC0000;'>Current ".ucfirst($text)." Genre: ".$genre."</h1>";
     echo "<table id='names'>";
-    $column = 0;
-    $entries = 0; 
 		echo "<tr>";
         $row = $result->fetch_assoc();
             echo "<td class='specialCell'>";
-				echo "<h3> $name </h3>";
+				echo "<h3> ".$name."</h3>";
 				echo "Points: ".$row['points']."<br>";
-                echo "story: ".$row['story']."<br>";
-               
+                echo "Genre: ".$row['genre']."<br>";
+                echo "story: ".$row['story']."<br>";  
             echo " </td>";
-            $column++;
 	echo "</tr>";
     echo "</table>";
     echo "<br>";

@@ -95,13 +95,13 @@
 			user_stats($user_id);
 		?>
 </section>
+    
 <section id="box">
 <div id="submittedText">
         <?php
 			echo "<form action='profile.php?user_id=$user_id' method='POST'>";
-			display_user_prompts_drop($user_id);
+			     display_user_prompts_drop($user_id);
 			echo "</form>";
-			
         ?>
 				
 </div>
@@ -109,29 +109,29 @@
 <div id="displayP">
 	<?php
 	   if(isset($_POST["prompts"]) && !empty($_POST["prompts"])){
-				$name = $_POST['prompts'];
-				display_prompts_user($user_id , $name);
-				
+           $name = $_POST['prompts'];
+           display_prompts_user($user_id , $name);		
        }
 	?>
 </div>
 </section>
+    
 <section id="box2">
 <div id="submittedText2">
-			<?php
-			echo "<form action='profile.php?user_id=$user_id' method='POST'>";
-			display_user_stories_drop($user_id);
-			echo "</form>";
-			?>
+    <?php
+        echo "<form action='profile.php?user_id=$user_id' method='POST'>";
+            display_user_stories_drop($user_id);
+        echo "</form>";
+    ?>
 				
 </div>
 <div id="displayS">
 	<?php
 	if(isset($_POST["stories"]) && !empty($_POST["stories"])){
-				$name = $_POST['stories'];
-				display_stories_user($user_id , $name);
+        $name = $_POST['stories'];
+        display_stories_user($user_id , $name);
 				
-			}
+    }
 	?>
 </div>
 </section>
