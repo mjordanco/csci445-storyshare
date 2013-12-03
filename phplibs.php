@@ -252,11 +252,13 @@ function display_table($name, $text, $genre) {
             echo "<form method='get' action='submitupdo.php'><button type='submit' name='vote' value='up'><img src='upArrow.png' width='20' height='20'></button>";
                 echo "<input type='hidden' name='table' value='".$name."'>";
                 echo "<input type='hidden' name='id' value='".$row['id']."'>";
+                echo "<input type='hidden' name='points' value='".$row['points']."'>";
             echo "</form>";
             
             echo "<form method='get' action='submitupdo.php'><button type='submit' name='vote' value='down'><img src='downArrow.png' width='20' height='20'></button>";
                 echo "<input type='hidden' name='table' value='".$name."'>";
                 echo "<input type='hidden' name='id' value='".$row['id']."'>";
+                echo "<input type='hidden' name='points' value='".$row['points']."'>";
             echo "</form>";
             echo "</div>";
             
