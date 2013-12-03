@@ -576,7 +576,7 @@ function print_gravatar($user_id) {
 		$hashed_email = hash_email($row['email']);
 		echo '<img src="http://www.gravatar.com/avatar/' . $hashed_email . '"></img>';
 	} else {
-		echo $result->error;
+		// echo $result->error;
 	}
 }
 
