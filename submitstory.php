@@ -65,6 +65,8 @@
     function loadPrompt() {
         if (getUrlVars()['prompt_id'] != php_select.value) {
             prompt_id = php_select.value;
+            title = title.value;
+            story = submit_story.value;
             document.location.href = "submitstory.php?prompt_id=" + prompt_id.toString();
         }
     }
@@ -81,7 +83,7 @@
     <section id="box">
 			
         <form method="post" action="submitstorydo.php">
-			<input name="name" type="text" placeholder="Title*" required/><br>
+			<input id="title" name="name" type="text" placeholder="Title*" required/><br>
 			
 			<p>Genre: Select the genre that best describes your story</p>
 			<select name="genre" required>

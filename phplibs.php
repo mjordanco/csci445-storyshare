@@ -124,7 +124,7 @@ function register_user($username, $password, $firstname, $lastname, $email) {
 
 	$encrypted_password = crypt($password, $salt);
 	
-	$add_query = 'INSERT INTO users(username, password, firstname, lastname, email) VALUES("' . $username . '", "' . $encrypted_password . '", "' . $firstname . '", "' . $lastname . '", "' . $email . '")';
+	$add_query = 'INSERT INTO users(username, password, firstname, lastname) VALUES("' . $username . '", "' . $encrypted_password . '", "' . $firstname . '", "' . $lastname . ")';
 	$db->query($add_query);
 
 	$user_id = $db->insert_id;
