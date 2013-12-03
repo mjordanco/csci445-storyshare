@@ -446,7 +446,7 @@ function displayFeatured($table_name, $typeTitle, $body) {
         if (strlen($str) > 1000) {
                 $str = substr($str, 0, 1000) . "...";
         }
-        echo "<p style='font-size: medium;'>".$str."</p>";
+        echo "<p style='font-size: large;'>".$str."</p>";
     
 	    echo "<div class='featured_bottom'>";
             echo "<h3>Submitted by ".getUserName($featured['user_id'])."</h3>";
