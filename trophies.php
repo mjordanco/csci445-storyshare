@@ -20,8 +20,6 @@ for($i =0; $i < 3; $i = $i+1)
    
 }
 $n = count($weekfrom);
-echo "COunt: ".$n;
-echo ": day is".$weekfrom[0];
 
 	?>
 	<style type="text/css">

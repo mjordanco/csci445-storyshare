@@ -370,6 +370,63 @@ function display_stories_trophies($startweek, $stopweek) {
     echo "</table>";
     echo "<br>";
 }
+function user_stats($userId){
+	$userName = "";
+	 $db = open_db(); 
+    $query = "SELECT user_id, id, points FROM stories Where user_id= \"$userId\" ";
+    $result = $db->query($query);
+    $num_results = $result->num_rows;
+	$pointsS =0;
+	for($i=0; $i < $num_results; $i = $i +1){
+		$row = $result->fetch_assoc();
+		$pointsS = $pointsS + $row['points'];
+	}
+	echo "<h4>Total Stories: $num_results <h4>";
+	$query = "SELECT user_id, id, points FROM prompts Where user_id= \"$userId\" ";
+    $result = $db->query($query);
+    $num_results = $result->num_rows;
+	$pointsP =0;
+	for($i=0; $i < $num_results; $i = $i +1){
+		$row = $result->fetch_assoc();
+		$pointsP = $pointsP + $row['points'];
+	}
+	echo "<h4>Total Prompts: $num_results<h4>";
+	
+	echo "<h4>Total Trophies: <h4>";
+	$total = $pointsS + $pointsP;
+	echo "<h4>Total points: $total <h4>";
+}
+
+function display_user_prompts_drop($userID){
+
+                $db = open_db(); 
+                $query = "SELECT user_id, name FROM prompts where user_id=\"$userID\"";
+                $result = $db->query($query);
+                $num_results = $result->num_rows;
+				
+                echo "<select name='prompts' size='5' id='prompts' onchange='this.form.submit()'>";
+                for ($i=0; $i < $num_results; $i++) {
+                    $row = $result->fetch_assoc();
+                     echo "<option value=".$row['name'].">".$row['name']."</option>";
+                }
+                echo "</select>";
+                echo "<br>";
+}
+function display_user_stories_drop($userID){
+
+                $db = open_db(); 
+                $query = "SELECT user_id, name FROM stories where user_id=\"$userID\"";
+                $result = $db->query($query);
+                $num_results = $result->num_rows;
+				
+                echo "<select name='stories' size='5' id='stoires' onchange='this.form.submit()'>";
+                for ($i=0; $i < $num_results; $i++) {
+                    $row = $result->fetch_assoc();
+                     echo "<option value=".$row['name'].">".$row['name']."</option>";
+                }
+                echo "</select>";
+                echo "<br>";
+}
 
 function displayFeatured($table_name, $typeTitle, $body) {
         $db = open_db(); 
