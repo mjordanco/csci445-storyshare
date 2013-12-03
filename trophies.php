@@ -89,6 +89,7 @@ $n = count($weekfrom);
             padding: 10px 10px 10px 10px;
         }
 	</style>
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
 </head>
 <body>
 	<?php

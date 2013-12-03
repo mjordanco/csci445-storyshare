@@ -14,6 +14,7 @@
 			padding: 20px;
 		}
 	</style>
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
 </head>
 <body>
 	<?php
