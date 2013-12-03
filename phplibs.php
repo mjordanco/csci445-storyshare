@@ -170,9 +170,9 @@ function get_prompts( $category) {
 			<li class=\"left\">Prompt:</li><li class=\"right\">".$tRow['prompt']."</li></ul><ul class =\"dispP\">
 			<li class=\"poin\">Points: </li><li class=\"pright\">".$tRow['points']."</li></ul> 
 			<div class=\"leftF\">
-			<form method=\"post\" action=\"submitupdo.php\"></form> <button type=\"submit\"><img src=\"./upArrow.bmp\"  width=\"20\" height=\"30\"></button></form>
+			<form method=\"post\" action=\"submitvotedo.php\"></form> <button type=\"submit\"><img src=\"./upArrow.bmp\"  width=\"20\" height=\"30\"></button></form>
 			</div><div class =\"rightF\">
-			<form method=\"post\" action=\"submitdowndo.php\"></form> <button type=\"submit\"><img src=\"./downArrow.bmp\"  width=\"20\" height=\"30\"></button></form></div></td>";
+			<form method=\"post\" action=\"submitvotedo.php\"></form> <button type=\"submit\"><img src=\"./downArrow.bmp\"  width=\"20\" height=\"30\"></button></form></div></td>";
 			++$i;
 		}
 		$stmt->close();
@@ -211,20 +211,12 @@ function submit_story($name, $genre, $rating, $story, $prompt_id, $user_id, $poi
 }
 
        
-function submit_vote($vote, $table, $id, $updated_points) {            
-    echo "Vote: ".$vote;
-    echo "<br>";
-    echo "To: ".$table;
-    echo "<br>";
-    echo "With ID: ".$id;
-    echo "<br>";
-    
+function submit_vote($vote, $table, $name, $id, $updated_points) {            
     $db = open_db();
-    $update = 'UPDATE '.$table.' SET points=5 where id=1';
+    $update = 'UPDATE '.$table.' SET points='.$updated_points.' WHERE id='.$id.'';
     $db->query($update);
     
-    echo "<p style='color: white; font-size: large;'>Your vote was successfully submitted!</p>";
-
+    echo "<p style='color: white; font-size: x-large;'>Your ".$vote." vote for ".$name." was successfully submitted!</p>";
 }
 
 function display_table($name, $text, $genre) {
@@ -266,14 +258,16 @@ function display_table($name, $text, $genre) {
             
             
             echo "<div class='arrows'>";
-            echo "<form method='get' action='submitupdo.php'><button type='submit' name='vote' value='up'><img src='upArrow.png' width='20' height='20'></button>";
+            echo "<form method='get' action='submitvotedo.php'><button type='submit' name='vote' value='up'><img src='upArrow.png' width='20' height='20'></button>";
                 echo "<input type='hidden' name='table' value='".$name."'>";
+                echo "<input type='hidden' name='name' value='".$row['name']."'>";
                 echo "<input type='hidden' name='id' value='".$row['id']."'>";
                 echo "<input type='hidden' name='points' value='".$row['points']."'>";
             echo "</form>";
             
-            echo "<form method='get' action='submitupdo.php'><button type='submit' name='vote' value='down'><img src='downArrow.png' width='20' height='20'></button>";
+            echo "<form method='get' action='submitvotedo.php'><button type='submit' name='vote' value='down'><img src='downArrow.png' width='20' height='20'></button>";
                 echo "<input type='hidden' name='table' value='".$name."'>";
+                echo "<input type='hidden' name='name' value='".$row['name']."'>";
                 echo "<input type='hidden' name='id' value='".$row['id']."'>";
                 echo "<input type='hidden' name='points' value='".$row['points']."'>";
             echo "</form>";

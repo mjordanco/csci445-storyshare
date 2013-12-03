@@ -32,13 +32,17 @@
 
             $vote = $_GET['vote'];
             $table = $_GET['table'];
+            $name = $_GET['name'];
             $id = $_GET['id'];
             $points = $_GET['points'];
 
-            $updated_points = $points + 1;
+            if ($vote == "up") {
+                $updated_points = $points + 1;
+            } else if ($vote == "down") {
+                $updated_points = $points - 1;
+            }
 
-
-            submit_vote($vote, $table, $id, $updated_points);
+            submit_vote($vote, $table, $name, $id, $updated_points);
 		?>
 	</section>
 </body>
