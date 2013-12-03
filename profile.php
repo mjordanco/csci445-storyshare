@@ -21,11 +21,15 @@
             float: center;
 		    overflow: hidden;
 			margin-left: 30%;
+            width: 60%;
+            font-size: medium;
 		}
 		#box2 {
             float: center;
 		    overflow: hidden;
 			margin-left: 30%;
+            width: 60%;
+            font-size: medium;
 		}
 		#submittedText {
 			float: left;
@@ -47,18 +51,21 @@
             width: 95% !important;
 		}
 		#displayP {
+            margin: 20px 20px 20px 20px;
 			float: right;
-			width: 60%;
+			width: 300px;
 		}
 		#displayS {
+            margin: 20px 20px 20px 20px;
 			float: right;
-			width: 60%;
+			width: 300px;
 		}
 		td.specialCell {
+            margin: 20px 20px 20px 20px;
+            padding: 10px 10px 10px 10px;
 			background-color: #CC9922;
-			 border: 1px solid #666633;
-			 width: 25%;
-			 min-width: 240px;
+            border: 1px solid #666633;
+            min-width: 240px;
 		}
 	</style>
 </head>
