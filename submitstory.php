@@ -53,6 +53,22 @@
             font-size: large;
         }
 	</style>
+    <script type="text/javascript">
+    function getUrlVars() {
+        var vars = {};
+        var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+            vars[key] = value;
+        });
+        return vars;
+    }
+
+    function loadPrompt() {
+        if (getUrlVars()['prompt_id'] != php_select.value) {
+            prompt_id = php_select.value;
+            document.location.href = "submitstory.php?prompt_id=" + prompt_id.toString();
+        }
+    }
+    </script>
 </head>
 <body>
 	<?php
@@ -100,15 +116,35 @@
                 $result = $db->query($query);
                 $num_results = $result->num_rows;
 
-                echo "<select name='prompt_id' size='10' id='php_select' required>";
+                echo "<select name='prompt_id' size='10' id='php_select' onchange='loadPrompt();' required>";
                 for ($i=0; $i < $num_results; $i++) {
                     $row = $result->fetch_assoc();
-                     echo "<option value=".$row['id'].">".$row['name']."</option>";
+                    if (isset($_GET['prompt_id'])) {
+                        $selected = $_GET['prompt_id'] == $row['id'];
+                        if ($selected) {
+                            echo "<option value=".$row['id']." selected='selected'>".$row['name']."</option>";
+                        } else {
+                        echo "<option value=".$row['id'].">".$row['name']."</option>";
+                    }
+                    } else {
+                        echo "<option value=".$row['id'].">".$row['name']."</option>";
+                    }
                 }
                 echo "</select>";
                 echo "<br>";
-         
             ?>
+
+            <?php
+                if (isset($_GET['prompt_id'])) {
+                    $prompt_id = $_GET['prompt_id'];
+                    $db = open_db();
+                    $query = 'SELECT * FROM prompts WHERE prompts.id = ' . $prompt_id . ';';
+                    $result = $db->query($query);
+                    $row = $result->fetch_assoc();
+
+                    echo '<p>' . $row['prompt'] . '</p>';
+                }
+                ?>
             
 			<textarea id="submit_story" name="story" rows="40" columns="30" required></textarea>
             <br>
