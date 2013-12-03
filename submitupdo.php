@@ -25,7 +25,7 @@
 
 	<section id="submit_box">
 		<?php
-            $db = mysql_connect('localhost', 'team12', 'grapefruit');
+            $db = mysqli_connect('localhost', 'team12', 'grapefruit');
             if (!$db) {
                 echo "Could not connect!";
             }
@@ -37,7 +37,7 @@
 
             $updated_points = $points + 1;
 
-            mysql_query("UPDATE $table SET points=$updated_points WHERE id=$id");
+            mysqli_query($db, "UPDATE $table SET points=$updated_points WHERE id=$id");
 
             echo "<p id='voteCast'>Your ".$vote." vote has been cast!</p>";
             
