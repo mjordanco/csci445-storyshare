@@ -1,6 +1,6 @@
 	#center {
 		margin-left: 200px;
-		height: 1300px;
+		height: 2000px;
 		background: white;
 		border: 1px solid black;
 		border-radius: 5px;
@@ -127,6 +127,11 @@
     #names td {
         border: 2px solid #666633;
     } 
+
+    /*Changes background for every even numbered row*/
+    #names tr:nth-of-type(even) {
+        background: #FFE682;
+    }
         
     /*Changes background for every odd numbered row*/
     #names tr:nth-of-type(odd) {
