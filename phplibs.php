@@ -351,17 +351,28 @@ function display_prompts_trophies($startweek, $stopweek) {
         }
         
         $row = $result->fetch_assoc();
-            echo "<td class='specialCell'>";
-				echo "<h3> $tNames[$i] </h3>";
-                echo "UserName: ".getUserName($row['user_id'])."<br>";
-				echo "Points: ".$row['points']."<br>";
-				echo "Genre: ".$row['genre']."<br>";
-                echo "<span class='hover'>".$row['prompt']."</span>";
-               
-            echo " </td>";
-            $column++;
         
-		
+        $prompt = $row['prompt'];
+        if (strlen($prompt) > 100) {
+            $prompt = substr($prompt, 0, 300) . "...";
+        }
+        
+        if ($column == 0) {
+            echo "<td class='gold'>";
+        } else if ($column == 1) {
+            echo "<td class='silver'>";
+        } else if ($column == 2) {
+            echo "<td class='bronze'>";
+        }
+            echo "<h3> $tNames[$i] </h3>";
+            echo "UserName: ".getUserName($row['user_id'])."<br>";
+            echo "Points: ".$row['points']."<br>";
+            echo "Genre: ".$row['genre']."<br>";
+            echo "<br>";
+            echo "<span class='hover'><strong>".wordwrap($prompt, 100, "\n", false)."</strong></span>";
+               
+        echo " </td>";
+        $column++;
     }
 	echo "</tr>";
     echo "</table>";
@@ -388,12 +399,25 @@ function display_stories_trophies($startweek, $stopweek) {
         }
         
         $row = $result->fetch_assoc();
-            echo "<td class='specialCell'>";
+        
+        $story = $row['story'];
+        if (strlen($story) > 100) {
+            $story = substr($story, 0, 400) . "...";
+        }
+        
+        if ($column == 0) {
+            echo "<td class='gold'>";
+        } else if ($column == 1) {
+            echo "<td class='silver'>";
+        } else if ($column == 2) {
+            echo "<td class='bronze'>";
+        }
 				echo "<h3> $tNames[$i] </h3>";
                 echo "UserName: ".getUserName($row['user_id'])."<br>";
 				echo "Points: ".$row['points']."<br>";
 				echo "Genre: ".$row['genre']."<br>";
-                echo "<span class='hover'>".$row['story']."</span>";
+                echo "<br>";
+                echo "<span class='hover'><strong>".wordwrap($story, 100, "\n", false)."</strong></span>";
                
             echo " </td>";
             $column++;
