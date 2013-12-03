@@ -220,7 +220,7 @@ function submit_vote($vote, $table, $id, $updated_points) {
     echo "<br>";
     
     $db = open_db();
-    $update = 'UPDATE prompts SET points=4 where id=1';
+    $update = 'UPDATE '.$table.' SET points=5 where id=1';
     $db->query($update);
     
     echo "<p style='color: white; font-size: large;'>Your vote was successfully submitted!</p>";
