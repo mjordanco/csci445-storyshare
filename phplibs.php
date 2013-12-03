@@ -246,10 +246,12 @@ function display_table($name, $text, $genre) {
                 }
                 echo "<span class='hover' OnClick='readStory(".$storyID.")'>".$str."</span>";
             
+            echo "<div class='arrows'>";
+            echo "<form method='post' action='submitupdo.php'><button type='submit'><img src='upArrow.png' width='20' height='20'></button></form>";
+            echo "<form method='post' action='submitdowndo.php'><button type='submit'><img src='downArrow.png' width='20' height='20'></button></form>";
+            echo "</div>";
+            echo "</td>";
             
-            echo " <form method=\"post\" action=\"submitupdo.php\"></form> <button type=\"submit\"><img src=\"./upArrow.bmp\"  width=\"20\" height=\"30\"></button></form>
-			</div><div class =\"rightF\">
-			<form method=\"post\" action=\"submitdowndo.php\"></form> <button type=\"submit\"><img src=\"./downArrow.bmp\"  width=\"20\" height=\"30\"></button></form></div></td>";
             $column++;
             $entries++;
         } 
