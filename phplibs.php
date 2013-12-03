@@ -428,6 +428,52 @@ function display_user_stories_drop($userID){
                 echo "<br>";
 }
 
+function display_prompts_user($userid , $name) {
+    $db = open_db(); 
+    $query = "SELECT * FROM prompts Where user_id=\"$userid\" AND name = \"$name\"";
+    $result = $db->query($query);
+    $num_results = $result->num_rows;
+    #echo "<h1 style='padding: 0px 0px 0px 15px; color: #CC0000;'>Current ".ucfirst($text)." Genre: ".$genre."</h1>";
+    echo "<table id='names'>";
+    $column = 0;
+    $entries = 0; 
+		echo "<tr>";
+        $row = $result->fetch_assoc();
+            echo "<td class='specialCell'>";
+				echo "<h3> $name </h3>";
+				echo "Points: ".$row['points']."<br>";
+				echo "Category: ".$row['category']."<br>";
+                echo "Prompt: ".$row['prompt']."<br>";
+               
+            echo " </td>";
+            $column++;
+	echo "</tr>";
+    echo "</table>";
+    echo "<br>";
+}
+
+function display_stories_user($userid , $name) {
+    $db = open_db(); 
+    $query = "SELECT * FROM stories Where user_id=\"$userid\" AND name = \"$name\"";
+    $result = $db->query($query);
+    $num_results = $result->num_rows;
+    #echo "<h1 style='padding: 0px 0px 0px 15px; color: #CC0000;'>Current ".ucfirst($text)." Genre: ".$genre."</h1>";
+    echo "<table id='names'>";
+    $column = 0;
+    $entries = 0; 
+		echo "<tr>";
+        $row = $result->fetch_assoc();
+            echo "<td class='specialCell'>";
+				echo "<h3> $name </h3>";
+				echo "Points: ".$row['points']."<br>";
+                echo "story: ".$row['story']."<br>";
+               
+            echo " </td>";
+            $column++;
+	echo "</tr>";
+    echo "</table>";
+    echo "<br>";
+}
 function displayFeatured($table_name, $typeTitle, $body) {
         $db = open_db(); 
         $query = "SELECT * FROM $table_name";
