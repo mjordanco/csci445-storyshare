@@ -17,12 +17,12 @@
 			margin-left: 20%;
 		}
 		#submittedText {
-			
+			width: 30%;
 			padding: 15px;
 			height: 150px;
 		}
 		#submittedText2 {
-			
+			width: 30%;
 			padding: 15px;
 			height: 150px;
 		}
@@ -57,31 +57,26 @@
 
 			echo '<h2>Username: ' . $row['username'] . '</h2>';
 			echo '<h3>' . $row['firstname'] . ' ' . $row['lastname'] . '</h3>';
-			echo '<h4>Total Stories: <h4>';
-			echo '<h4>Total Prompts: <h4>';
-			echo '<h4>Total Trophies: <h4>';
-			echo '<h4>Total points: <h4>';
+			user_stats($user_id);
 		?>
 </section>
 <section id="box">
 <div id="submittedText">
-		
-			<select name="listbox" size="3">
-			<option value="Option 1" selected>Prompt 1</option>
-			<option value="Option 2">Prompt 2</option>
-			<option value="Option 3">Prompt 3</option>
-			</select>
+			<?php
+			echo "<form action='trophies.php?user_id=\"$user_id\"' method='POST'>";
+			display_user_prompts_drop($user_id);
+			?>
+</form>
 				
 </div>
 </section>
 <section id="box2">
 <div id="submittedText2">
-		
-			<select name="listbox2" size="3">
-			<option value="Option 1" selected>Story 1</option>
-			<option value="Option 2">Story 2</option>
-			<option value="Option 3">Story 3</option>
-			</select>
+			<?php
+			echo "<form action='trophies.php?user_id=\"$user_id\"' method='POST'>";
+			display_user_stories_drop($user_id);
+			echo "</form>";
+			?>
 				
 </div>
 </section>
