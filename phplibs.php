@@ -99,7 +99,7 @@ function print_header($selected_page) {
 }
 
 function open_db() {
-	@ $db = new mysqli('localhost', 'team12', 'grapefruit', 'team12_storyshare');
+	@ $db = new mysqli('localhost', 'root', '', 'team12_storyshare');
 	if (mysqli_connect_errno()) {
 		echo 'Error: Could not connect to database. Please try again later.';
 		return null;
@@ -552,6 +552,8 @@ function print_gravatar($user_id) {
 		$row = $result->fetch_assoc();
 		$hashed_email = hash_email($row['email']);
 		echo '<img src="http://www.gravatar.com/avatar/' . $hashed_email . '"></img>';
+	} else {
+		echo $result->error;
 	}
 }
 
