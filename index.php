@@ -21,6 +21,11 @@
 			float: right;
 		}
 	</style>
+    <script type="text/javascript">
+        function readStory(storyID) {
+            document.location.href = "fullStory.php?storyNum=" + storyID.toString();
+        }
+    </script>
 </head>
 <body>
 

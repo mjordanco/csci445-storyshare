@@ -450,7 +450,9 @@ function displayFeatured($table_name, $typeTitle, $body) {
     
 	    echo "<div class='featured_bottom'>";
             echo "<h3>Submitted by ".getUserName($featured['user_id'])."</h3>";
-		echo "<a href='./'><button type='button'>Continue Reading...</button></a>";
+            if ($table_name == "stories") {
+		      echo "<button type='button' OnClick='readStory(".$featured['id'].")'>Continue Reading...</button>";
+            }
 	    echo "</div>";
 }
 
