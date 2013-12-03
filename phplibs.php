@@ -231,7 +231,6 @@ function submit_vote($vote, $table, $name, $id, $updated_points) {
 function display_table($name, $text, $genre) {
     $db = open_db(); 
     $query = 'SELECT * FROM ' . $name . ';';
-    echo $query;
     $result = $db->query($query);
     $num_results = $result->num_rows;
 
