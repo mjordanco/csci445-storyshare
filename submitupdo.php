@@ -26,10 +26,13 @@
 	<section id="submit_box">
 		<?php
             $vote = $_GET['vote'];
+            $table = $_GET['table'];
+            $id = $_GET['id'];
+
             echo "<p id='voteCast'>Your vote has been cast!</p>";
             echo $vote;
-
-
+            echo $table;
+            echo $id;
 		?>
 	</section>
 </body>
