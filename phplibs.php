@@ -61,14 +61,21 @@ function print_header($selected_page) {
 			<a href="./submitprompt.php">Submit Prompt</a>
 		</li>';
 		#This is so that we can see the page.
-		echo '<li';
-		if ($selected_page == "submitstory") {
-			echo ' class="selected"';
+
+		$db = open_db();
+		$query = "SELECT count(id) FROM prompts;";
+		$result = $db->query($query);
+		$row = $result->fetch_assoc();
+		if ($row['count(id)'] > 0) {
+			echo '<li';
+			if ($selected_page == "submitstory") {
+				echo ' class="selected"';
+			}
+			echo '>
+				<a href="./submitstory.php">Submit Story</a>
+			</li>';
 		}
-		echo '>
-			<a href="./submitstory.php">Submit Story</a>
-		</li>';
-		
+
 		echo '<li class="signin last ';
 		if ($selected_page == "signout") {
 			echo ' selected';
@@ -92,7 +99,7 @@ function print_header($selected_page) {
 }
 
 function open_db() {
-	@ $db = new mysqli('localhost', 'team12', 'grapefruit', 'team12_storyshare');
+	@ $db = new mysqli('localhost', 'root', '', 'team12_storyshare');
 	if (mysqli_connect_errno()) {
 		echo 'Error: Could not connect to database. Please try again later.';
 		return null;
@@ -109,7 +116,7 @@ function print_feature($table, $id) {
 
 }
 
-function register_user($username, $password, $firstname, $lastname) {
+function register_user($username, $password, $firstname, $lastname, $email) {
 
 	$db = open_db();
 
@@ -117,7 +124,7 @@ function register_user($username, $password, $firstname, $lastname) {
 
 	$encrypted_password = crypt($password, $salt);
 	
-	$add_query = 'INSERT INTO users(username, password, firstname, lastname) VALUES("' . $username . '", "' . $encrypted_password . '", "' . $firstname . '", "' .$lastname . '")';
+	$add_query = 'INSERT INTO users(username, password, firstname, lastname, email) VALUES("' . $username . '", "' . $encrypted_password . '", "' . $firstname . '", "' . $lastname . '", "' . $email . '")';
 	$db->query($add_query);
 
 	$user_id = $db->insert_id;
@@ -203,6 +210,8 @@ function submit_story($name, $genre, $rating, $story, $prompt_id, $user_id, $poi
 	$add_query = 'INSERT INTO stories(name, genre, rating, story, prompt_id, user_id, points, submit_date) VALUES("'.$name.'", "'.$genre.'", "'.$rating.'", "'.$story.'", "'.$prompt_id.'", "'.$user_id.'", 0, "'.$date.'")';
     if ($db->query($add_query)) {
         echo "<p style='color: white; font-size: large;'>Your story was successfully submitted!</p>";
+    } else {
+    	echo $db->error;
     }
     
 	$story_id = $db->insert_id;
@@ -212,9 +221,12 @@ function submit_story($name, $genre, $rating, $story, $prompt_id, $user_id, $poi
 
 function display_table($name, $text, $genre) {
     $db = open_db(); 
-    $query = "SELECT * FROM $name";
+    $query = 'SELECT * FROM ' . $name . ';';
+    echo $query;
     $result = $db->query($query);
     $num_results = $result->num_rows;
+
+    echo $num_results;
 
     echo "<h1 style='padding: 0px 0px 0px 15px; color: #CC0000;'>Current ".ucfirst($text)." Genre: ".$genre."</h1>";
     echo "<table id='names'>";
@@ -333,7 +345,7 @@ function display_prompts_trophies($startweek, $stopweek) {
 				echo "<h3> $tNames[$i] </h3>";
                 echo "UserName: ".getUserName($row['user_id'])."<br>";
 				echo "Points: ".$row['points']."<br>";
-				echo "Category: ".$row['category']."<br>";
+				echo "Genre: ".$row['genre']."<br>";
                 echo "<span class='hover'>".$row['prompt']."</span>";
                
             echo " </td>";
@@ -515,6 +527,22 @@ function displayFeatured($table_name, $typeTitle, $body) {
 		      echo "<button type='button' OnClick='readStory(".$featured['id'].")'>Continue Reading...</button>";
             }
 	    echo "</div>";
+}
+
+function hash_email($email) {
+	return md5( strtolower( trim( $email ) ) );
+}
+
+function print_gravatar($user_id) {
+	$db = open_db();
+
+	$query_str = 'SELECT email FROM users WHERE id = ' . $user_id . ';';
+	
+	if ($result = $db->query($query_str)) {
+		$row = $result->fetch_assoc();
+		$hashed_email = hash_email($row['email']);
+		echo '<img src="http://www.gravatar.com/avatar/' . $hashed_email . '"></img>';
+	}
 }
 
 session_start();

@@ -93,7 +93,7 @@
             <br>
             <br>
             
-            <p>Prompt: Select the prompt that you based your story off of, or select 'No Prompt'</p>
+            <p>Prompt: Select the prompt that you based your story off of.</p>
             <?php
                 $db = open_db(); 
                 $query = "SELECT * FROM prompts";
@@ -105,7 +105,6 @@
                     $row = $result->fetch_assoc();
                      echo "<option value=".$row['id'].">".$row['name']."</option>";
                 }
-                echo "<option value=null>No Prompt</option>";
                 echo "</select>";
                 echo "<br>";
          

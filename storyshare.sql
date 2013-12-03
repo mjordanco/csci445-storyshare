@@ -16,14 +16,15 @@ CREATE TABLE users (
 	username TEXT,
 	firstname TEXT,
 	lastname TEXT,
-	password TEXT
+	password TEXT,
+	email TEXT
 );
 
 CREATE TABLE prompts (
 	id INTEGER PRIMARY KEY AUTO_INCREMENT,
 	name TEXT,
 	prompt TEXT,
-	category TEXT,
+	genre TEXT,
 	user_id INTEGER,
 	points INTEGER,
 	submit_date datetime,
@@ -34,6 +35,8 @@ CREATE TABLE stories (
 	id INTEGER PRIMARY KEY AUTO_INCREMENT,
 	name TEXT,
 	story TEXT,
+	genre TEXT,
+	rating TEXT,
 	prompt_id INTEGER,
 	user_id INTEGER,
 	points INTEGER,

@@ -78,6 +78,7 @@
 			$row = mysqli_fetch_array($result);
 
 			echo '<h2>Username: ' . $row['username'] . '</h2>';
+			print_gravatar($user_id);
 			echo '<h3>' . $row['firstname'] . ' ' . $row['lastname'] . '</h3>';
 			user_stats($user_id);
 		?>
