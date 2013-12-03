@@ -392,7 +392,7 @@ function displayFeatured($table_name, $typeTitle, $body) {
         echo "<p style='font-size: medium;'>".$str."</p>";
     
 	    echo "<div class='featured_bottom'>";
-            echo "<h3>Submitted by ".$featured['user_id']."</h3>";
+            echo "<h3>Submitted by ".getUserName($featured['user_id'])."</h3>";
 		echo "<a href='./'><button type='button'>Continue Reading...</button></a>";
 	    echo "</div>";
 }
