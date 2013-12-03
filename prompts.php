@@ -18,7 +18,11 @@
 	?>
 	
     <div class="profile_img">
-		<img src="user_profile_pic_placeholder.png" alt="User profile picture" height="80" width="80">
+		<?php
+			if (isset($_SESSION['user_id'])) {
+				print_gravatar($_SESSION['user_id']);
+			}
+		?>
 	</div>
 
     <div class="sidebar" id="first"><a href="prompts.php?sortGenre=View All">VIEW ALL</a></div>

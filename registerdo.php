@@ -23,6 +23,7 @@
 		$password_again = $_POST['pass_again'];
 		$firstname = $_POST['first'];
 		$lastname = $_POST['last'];
+		$email = $_POST['email'];
 
 		$_SESSION['error'] = '';
 
@@ -44,7 +45,7 @@
 
 			$row = mysqli_fetch_array($result);
 			if (!$row) {
-				register_user($username, $password, $firstname, $lastname);
+				register_user($username, $password, $firstname, $lastname, $email);
 			} else {
 				$_SESSION['error'] = '<h1>Unfortunately, that username was already taken. Please go back and try again!</h1>';
 			}

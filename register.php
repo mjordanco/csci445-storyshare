@@ -40,6 +40,7 @@
 				<input type="password" placeholder="Re-type Password..." name="pass_again"/><br>
 				<input type="text" placeholder="First Name" name="first"/><br>
 				<input type="text" placeholder="Last Name" name="last"/><br>
+				<input type="text" placeholder="Email" name="email"/><br>
 				<button type="submit">Register</button><br><br>
 			</form>
 		</center>
