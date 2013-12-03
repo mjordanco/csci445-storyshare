@@ -210,6 +210,23 @@ function submit_story($name, $genre, $rating, $story, $prompt_id, $user_id, $poi
 	return $story_id;
 }
 
+       
+function submit_vote($vote, $table, $id, $updated_points) {            
+    echo "Vote: ".$vote;
+    echo "<br>";
+    echo "To: ".$table;
+    echo "<br>";
+    echo "With ID: ".$id;
+    echo "<br>";
+    
+    $db = open_db();
+    $update = 'UPDATE prompts SET points=4 where id=1';
+    $db->query($update);
+    
+    echo "<p style='color: white; font-size: large;'>Your vote was successfully submitted!</p>";
+
+}
+
 function display_table($name, $text, $genre) {
     $db = open_db(); 
     $query = "SELECT * FROM $name";

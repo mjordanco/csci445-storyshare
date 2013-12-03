@@ -37,18 +37,8 @@
 
             $updated_points = $points + 1;
 
-            mysqli_query($db, "UPDATE $table SET points=$updated_points WHERE id=$id");
 
-            echo "<p id='voteCast'>Your ".$vote." vote has been cast!</p>";
-            
-            echo "Vote: ".$vote;
-            echo "<br>";
-            echo "To: ".$table;
-            echo "<br>";
-            echo "With ID: ".$id;
-            echo "<br>";
-            echo "Prevous point value: ".$points;
-            echo "<br>";
+            submit_vote($vote, $table, $id, $updated_points);
 		?>
 	</section>
 </body>
