@@ -1,7 +1,7 @@
 <?php
 
 function print_header($selected_page) {
-    echo "<link rel='shortcut icon' href='/favicon.ico'>";
+    echo "<link rel='shortcut icon' type='image/x-icon' href='favicon.ico'>";
 	echo '
 	<link rel="stylesheet" href="theme.css" />
 	<header>
@@ -99,7 +99,7 @@ function print_header($selected_page) {
 }
 
 function open_db() {
-	@ $db = new mysqli('localhost', 'team12', 'grapefruit', 'team12_storyshare');
+	@ $db = new mysqli('localhost', 'root', '', 'team12_storyshare');
 	if (mysqli_connect_errno()) {
 		echo 'Error: Could not connect to database. Please try again later.';
 		return null;
@@ -333,7 +333,7 @@ function getUserName($userId){
 
 function display_prompts_trophies($startweek, $stopweek) {
     $db = open_db(); 
-    $query = "SELECT * FROM prompts Where submit_date < \"$stopweek\" AND submit_date > \"$startweek\" ORDER BY points DESC LIMIT 4";
+    $query = "SELECT * FROM prompts WHERE submit_date < \"$stopweek\" AND submit_date > \"$startweek\" ORDER BY points DESC LIMIT 4";
     $result = $db->query($query);
     $num_results = $result->num_rows;
 	$tNames = array("Gold", "Silver", "Bronze");
@@ -351,17 +351,28 @@ function display_prompts_trophies($startweek, $stopweek) {
         }
         
         $row = $result->fetch_assoc();
-            echo "<td class='specialCell'>";
-				echo "<h3> $tNames[$i] </h3>";
-                echo "UserName: ".getUserName($row['user_id'])."<br>";
-				echo "Points: ".$row['points']."<br>";
-				echo "Genre: ".$row['genre']."<br>";
-                echo "<span class='hover'>".$row['prompt']."</span>";
-               
-            echo " </td>";
-            $column++;
         
-		
+        $prompt = $row['prompt'];
+        if (strlen($prompt) > 100) {
+            $prompt = substr($prompt, 0, 300) . "...";
+        }
+        
+        if ($column == 0) {
+            echo "<td class='gold'>";
+        } else if ($column == 1) {
+            echo "<td class='silver'>";
+        } else if ($column == 2) {
+            echo "<td class='bronze'>";
+        }
+            echo "<h3> $tNames[$i] </h3>";
+            echo "UserName: ".getUserName($row['user_id'])."<br>";
+            echo "Points: ".$row['points']."<br>";
+            echo "Genre: ".$row['genre']."<br>";
+            echo "<br>";
+            echo "<span class='hover'><strong>".wordwrap($prompt, 100, "\n", false)."</strong></span>";
+               
+        echo " </td>";
+        $column++;
     }
 	echo "</tr>";
     echo "</table>";
@@ -370,7 +381,7 @@ function display_prompts_trophies($startweek, $stopweek) {
 
 function display_stories_trophies($startweek, $stopweek) {
     $db = open_db(); 
-    $query = "SELECT * FROM stories Where submit_date < \"$stopweek\" AND submit_date > \"$startweek\" ORDER BY points DESC LIMIT 4";
+    $query = "SELECT * FROM stories WHERE submit_date < \"$stopweek\" AND submit_date > \"$startweek\" ORDER BY points DESC LIMIT 4";
     $result = $db->query($query);
     $num_results = $result->num_rows;
 	$tNames = array("Gold", "Silver", "Bronze");
@@ -388,12 +399,25 @@ function display_stories_trophies($startweek, $stopweek) {
         }
         
         $row = $result->fetch_assoc();
-            echo "<td class='specialCell'>";
+        
+        $story = $row['story'];
+        if (strlen($story) > 100) {
+            $story = substr($story, 0, 400) . "...";
+        }
+        
+        if ($column == 0) {
+            echo "<td class='gold'>";
+        } else if ($column == 1) {
+            echo "<td class='silver'>";
+        } else if ($column == 2) {
+            echo "<td class='bronze'>";
+        }
 				echo "<h3> $tNames[$i] </h3>";
                 echo "UserName: ".getUserName($row['user_id'])."<br>";
 				echo "Points: ".$row['points']."<br>";
 				echo "Genre: ".$row['genre']."<br>";
-                echo "<span class='hover'>".$row['story']."</span>";
+                echo "<br>";
+                echo "<span class='hover'><strong>".wordwrap($story, 100, "\n", false)."</strong></span>";
                
             echo " </td>";
             $column++;
@@ -408,7 +432,7 @@ function display_stories_trophies($startweek, $stopweek) {
 function user_stats($userId){
 	$userName = "";
 	 $db = open_db(); 
-    $query = "SELECT user_id, id, points FROM stories Where user_id= \"$userId\" ";
+    $query = "SELECT user_id, id, points FROM stories WHERE user_id= \"$userId\" ";
     $result = $db->query($query);
     $num_results = $result->num_rows;
 	$pointsS =0;
@@ -417,7 +441,7 @@ function user_stats($userId){
 		$pointsS = $pointsS + $row['points'];
 	}
 	echo "<h4>Total Stories: $num_results <h4>";
-	$query = "SELECT user_id, id, points FROM prompts Where user_id= \"$userId\" ";
+	$query = "SELECT user_id, id, points FROM prompts WHERE user_id= \"$userId\" ";
     $result = $db->query($query);
     $num_results = $result->num_rows;
 	$pointsP =0;
@@ -433,56 +457,51 @@ function user_stats($userId){
 }
 
 function display_user_prompts_drop($userID){
-
-                $db = open_db(); 
-                $query = "SELECT user_id, name FROM prompts where user_id=\"$userID\"";
-                $result = $db->query($query);
-                $num_results = $result->num_rows;
+    $db = open_db(); 
+    $query = "SELECT user_id, name FROM prompts WHERE user_id=\"$userID\"";
+    $result = $db->query($query);
+    $num_results = $result->num_rows;
 				
-                echo "<select name='prompts' size='5' id='prompts' onchange='this.form.submit()'>";
-                for ($i=0; $i < $num_results; $i++) {
-                    $row = $result->fetch_assoc();
-                     echo "<option value=".$row['name'].">".$row['name']."</option>";
-                }
-                echo "</select>";
-                echo "<br>";
+    echo "<select name='prompts' size='5' id='prompts' onchange='this.form.submit()'>";
+    for ($i=0; $i < $num_results; $i++) {
+        $row = $result->fetch_assoc();
+        echo "<option value='".$row['name']."'>".$row['name']."</option>";
+    }
+    echo "</select>";
+    echo "<br>";
 }
 
 function display_user_stories_drop($userID){
-
-                $db = open_db(); 
-                $query = "SELECT user_id, name FROM stories where user_id=\"$userID\"";
-                $result = $db->query($query);
-                $num_results = $result->num_rows;
-				
-                echo "<select name='stories' size='5' id='stoires' onchange='this.form.submit()'>";
-                for ($i=0; $i < $num_results; $i++) {
-                    $row = $result->fetch_assoc();
-                     echo "<option value=".$row['name'].">".$row['name']."</option>";
-                }
-                echo "</select>";
-                echo "<br>";
-}
-
-function display_prompts_user($userid , $name) {
     $db = open_db(); 
-    $query = "SELECT * FROM prompts Where user_id=\"$userid\" AND name = \"$name\"";
+    $query = "SELECT user_id, name FROM stories WHERE user_id=\"$userID\"";
     $result = $db->query($query);
     $num_results = $result->num_rows;
+				
+    echo "<select name='stories' size='5' id='stoires' onchange='this.form.submit()'>";
+    for ($i=0; $i < $num_results; $i++) {
+        $row = $result->fetch_assoc();
+        echo "<option value='".$row['name']."'>".$row['name']."</option>";
+    }
+    echo "</select>";
+    echo "<br>";
+}
+
+function display_prompts_user($userid, $name) {
+    $db = open_db(); 
+    $query = "SELECT * FROM prompts WHERE user_id=\"$userid\" AND name =\"$name\"";
+    $result = $db->query($query);
     #echo "<h1 style='padding: 0px 0px 0px 15px; color: #CC0000;'>Current ".ucfirst($text)." Genre: ".$genre."</h1>";
     echo "<table id='names'>";
-    $column = 0;
-    $entries = 0; 
 		echo "<tr>";
         $row = $result->fetch_assoc();
             echo "<td class='specialCell'>";
-				echo "<h3> $name </h3>";
+				echo "<h3>".$name."</h3>";
 				echo "Points: ".$row['points']."<br>";
-				echo "Category: ".$row['category']."<br>";
-                echo "Prompt: ".$row['prompt']."<br>";
-               
-            echo " </td>";
-            $column++;
+				echo "Genre: ".$row['genre']."<br>";
+                echo "<br>";
+                echo $row['prompt'];
+                echo "<br>";
+                echo "</td>";
 	echo "</tr>";
     echo "</table>";
     echo "<br>";
@@ -490,22 +509,26 @@ function display_prompts_user($userid , $name) {
 
 function display_stories_user($userid , $name) {
     $db = open_db(); 
-    $query = "SELECT * FROM stories Where user_id=\"$userid\" AND name = \"$name\"";
+    $query = "SELECT * FROM stories WHERE user_id=\"$userid\" AND name = \"$name\"";
     $result = $db->query($query);
-    $num_results = $result->num_rows;
+    
     #echo "<h1 style='padding: 0px 0px 0px 15px; color: #CC0000;'>Current ".ucfirst($text)." Genre: ".$genre."</h1>";
     echo "<table id='names'>";
-    $column = 0;
-    $entries = 0; 
 		echo "<tr>";
         $row = $result->fetch_assoc();
+    
+        $story = $row['story'];
+        if (strlen($story) > 100) {
+            $story = substr($story, 0, 400) . "...";
+        }
             echo "<td class='specialCell'>";
-				echo "<h3> $name </h3>";
+				echo "<h3> ".$name."</h3>";
 				echo "Points: ".$row['points']."<br>";
-                echo "story: ".$row['story']."<br>";
-               
+                echo "Genre: ".$row['genre']."<br>";
+                echo "<br>";
+                echo $story;
+                echo "<br>";  
             echo " </td>";
-            $column++;
 	echo "</tr>";
     echo "</table>";
     echo "<br>";
@@ -552,6 +575,8 @@ function print_gravatar($user_id) {
 		$row = $result->fetch_assoc();
 		$hashed_email = hash_email($row['email']);
 		echo '<img src="http://www.gravatar.com/avatar/' . $hashed_email . '"></img>';
+	} else {
+		echo $result->error;
 	}
 }
 
