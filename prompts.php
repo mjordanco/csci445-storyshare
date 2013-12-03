@@ -10,16 +10,21 @@
             margin-top: 10px;
         }
 </style>
-<link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
+
 </head>
 <body>
 	<?php
 		print_header("prompts");
 	?>
 	
-    <div class='profile_img'>
-    </div>
-    
+    <div class="profile_img">
+		<?php
+			if (isset($_SESSION['user_id'])) {
+				print_gravatar($_SESSION['user_id']);
+			}
+		?>
+	</div>
+
     <div class="sidebar" id="first"><a href="prompts.php?sortGenre=View All">VIEW ALL</a></div>
 	<div class="sidebar" id="second"><a href="prompts.php?sortGenre=Action">ACTION</a></div>
 	<div class="sidebar" id="third"><a href="prompts.php?sortGenre=Adventure">ADVENTURE</a></div>

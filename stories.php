@@ -16,15 +16,19 @@ function readStory(storyID) {
     document.location.href = "fullStory.php?storyNum=" + storyID.toString();
 }
 </script>
-<link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
 </head>
 <body>
 	<?php
 		print_header("stories");
 	?>
-    
-    <div class='profile_img'>
-    </div>
+	
+	<div class="profile_img">
+		<?php
+			if (isset($_SESSION['user_id'])) {
+				print_gravatar($_SESSION['user_id']);
+			}
+		?>
+	</div>
 	
     <div class="sidebar" id="first"><a href="stories.php?sortGenre=View All">VIEW ALL</a></div>
 	<div class="sidebar" id="second"><a href="stories.php?sortGenre=Action">ACTION</a></div>
