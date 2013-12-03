@@ -42,7 +42,6 @@ function readStory(storyID) {
         <?php
             $sortGenre = htmlspecialchars($_GET['sortGenre']);
             display_table("stories", "story", $sortGenre);
-            /* I will be working on displaying full story after clicking table cell*/
         ?>
 		
 	</div>

@@ -1,4 +1,3 @@
-<html>
 <head>
 	<?php
 		include_once('phplibs.php');
@@ -6,38 +5,30 @@
 	<style type="text/css">
 		#submit_box {
 			width:75%;
-			background-color: #8493CA;
+			background-color: #8A0000;
 
 			border-style: solid;
 			border-width: 1px;
 
 			padding: 20px;
 		}
+        #voteCast {
+            font-size: large;
+            color: white;
+        }
 	</style>
 </head>
-<body>
+<body>   
 	<?php
 		print_header("");
 	?>
 
 	<section id="submit_box">
 		<?php
+            $vote = $_GET['vote'];
+            echo "<p id='voteCast'>Your vote has been cast!</p>";
+            echo $vote;
 
-			$name = $_POST['name'];
-			$category = $_POST['category'];
-			$prompt = $_POST['prompt'];
-            $safe_prompt = addslashes($prompt);
-
-			$points = 0;
-			$user_id = $_SESSION['user_id'];
-
-			if ($name == "" || $category == "" || $prompt == "") {
-				echo 'All fields must be filled out to submit a prompt! Go back and try again!';
-			}
-
-			submit_prompt($name, $category, $safe_prompt, $points, $user_id);
-
-			header('Location: ./');
 
 		?>
 	</section>

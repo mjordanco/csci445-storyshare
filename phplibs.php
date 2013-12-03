@@ -247,8 +247,8 @@ function display_table($name, $text, $genre) {
                 echo "<span class='hover' OnClick='readStory(".$storyID.")'>".$str."</span>";
             
             echo "<div class='arrows'>";
-            echo "<form method='post' action='submitupdo.php'><button type='submit'><img src='upArrow.png' width='20' height='20'></button></form>";
-            echo "<form method='post' action='submitdowndo.php'><button type='submit'><img src='downArrow.png' width='20' height='20'></button></form>";
+            echo "<form method='get' action='submitupdo.php'><button type='submit' name='vote' value='up'><img src='upArrow.png' width='20' height='20'></button></form>";
+            echo "<form method='get' action='submitupdo.php'><button type='submit' name='vote' value='down'><img src='downArrow.png' width='20' height='20'></button></form>";
             echo "</div>";
             echo "</td>";
             
@@ -372,6 +372,7 @@ function display_stories_trophies($startweek, $stopweek) {
     echo "</table>";
     echo "<br>";
 }
+
 function user_stats($userId){
 	$userName = "";
 	 $db = open_db(); 
@@ -414,6 +415,7 @@ function display_user_prompts_drop($userID){
                 echo "</select>";
                 echo "<br>";
 }
+
 function display_user_stories_drop($userID){
 
                 $db = open_db(); 
@@ -476,6 +478,7 @@ function display_stories_user($userid , $name) {
     echo "</table>";
     echo "<br>";
 }
+
 function displayFeatured($table_name, $typeTitle, $body) {
         $db = open_db(); 
         $query = "SELECT * FROM $table_name";
