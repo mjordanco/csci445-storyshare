@@ -2,6 +2,7 @@
 <head>
 	<?php
 		include_once('phplibs.php');
+
 		$day = date('w');
 		$startweek = date('Y-m-d', strtotime('-'.$day.' days'));
 		$stopweek = date('Y-m-d', strtotime('+'.(6-$day).' days'));
@@ -92,24 +93,71 @@ Stories:
 <div id="sName">
 Past Prompts:
 <br>
+<form action="trophies.php" method="POST">
 <?php
                
-                echo "<select name='prompt_id' size='4' id='php_select' required>";
+                echo "<select name='week' size='4' id='week' onchange='this.form.submit()'>";
                for($i =0; $i < 3;  $i = $i+1) {
-                    $row = "week: ".$weekfrom[$i]." - ".$weekto[$i];
-                     echo "<option value=".$row.">".$row."</option>";
+                    $row = $weekfrom[$i].":".$weekto[$i];
+                     echo "<option value=".$row.">".$weekfrom[$i]." - ".$weekto[$i]."</option>";
                 }
                 echo "</select>";
                 echo "<br>";
          
             ?>
+</form>
 </div>
 <section id="storybox">
 	<?php 
+		if(isset($_POST["week"]) && !empty($_POST["week"])){
+			$w =  $_POST['week'];
+			$pieces = explode(":", $w);
+			display_prompts_trophies($pieces[0], $pieces[1]);
+		}
+		else{
 		$startweek = "2013-11-17";
-		$stopweek = "2013-12-01";
-		display_stories_trophies($startweek, $stopweek);
+			$stopweek = "2013-12-01";
+			display_prompts_trophies($startweek, $stopweek);
+			
+		}
 	?>
 </section>	
+
+<div id="sName">
+Past Stories:
+<br>
+<form action="trophies.php" method="POST">
+<?php
+               
+                echo "<select name='weekS' size='4' id='weekS' onchange='this.form.submit()'>";
+               for($i =0; $i < 3;  $i = $i+1) {
+                    $row = $weekfrom[$i].":".$weekto[$i];
+                     echo "<option value=".$row.">".$weekfrom[$i]." - ".$weekto[$i]."</option>";
+                }
+                echo "</select>";
+                echo "<br>";
+         
+            ?>
+</form>
+</div>
+<section id="storybox">
+	<?php 
+		
+		if(isset($_POST["weekS"]) && !empty($_POST["weekS"])){
+			$w =  $_POST['weekS'];
+			$pieces = explode(":", $w);
+			display_stories_trophies($pieces[0], $pieces[1]);
+		}
+		else{
+		$startweek = "2013-11-17";
+			$stopweek = "2013-12-01";
+			display_stories_trophies($startweek, $stopweek);
+			
+		}
+	?>
+</section>	
+
+
+
 </body>
 </html>
